@@ -1,0 +1,75 @@
+.scroll{
+	width: 30px;
+	height: 50px;
+	border-radius: 13px;
+	border: 2px solid white;
+	position:relative;
+	margin: 0 auto;
+	margin-bottom: 5rem;
+	&:before{
+		content: "";
+		width: 3px;
+		height: 7px;
+		background: white;
+		border-radius: 50%;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translate(-50%, 0);
+		animation: scrollDown 1s ease-in-out infinite;
+	}
+	&__down{
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: white;
+		width: 3px;
+		height: 3px;
+		border-radius: 50%;
+		animation: scrollFade 1s ease infinite;
+		&:last-child{
+			width: 0;
+			height: 0;
+			background-color: transparent;
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			border-top: 3px solid white;
+		}
+		&:nth-child(1) {
+			animation-delay: 0s;
+			bottom: -8px;
+		  }
+		&:nth-child(2) {
+			animation-delay: 0.4s;
+			bottom: -14px;
+		  }
+		&:nth-child(3) {
+			animation-delay: 0.8s;
+			bottom: -20px;
+		  }
+	}
+}
+
+@keyframes scrollDown {
+	0% {
+	  transform: translate(-50%, 0);
+	}
+	70%, 90% {
+	  transform: translate(-50%, 100%);
+	}
+	100% {
+	  transform: translate(-50%, 0);
+	}
+}
+
+@keyframes scrollFade {
+	0% {
+	  opacity: 1;
+	}
+	50% {
+	  opacity: 0.3;
+	}
+	100% {
+	  opacity: 1;
+	}
+}

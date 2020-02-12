@@ -1,0 +1,51 @@
+header{
+	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/ibukibg.jpg");
+	background-size: cover;
+	background-position:fixed;
+}
+
+.front-page{
+	min-height: 100vh;
+}
+
+.upper-wrapper{
+	max-width: 1250px;
+	margin: 0 auto;
+}
+
+.page-title{
+	margin: 6.875rem auto;
+}
+
+h1{
+	font-family: "Montserrat", Arial, sans-serif;
+	color:white;
+	font-size: 1.875rem;
+	font-weight: normal;
+	letter-spacing: 0.12em;
+	padding-left: 1.5rem;
+	position:relative;
+	&:before{
+		content:"";
+		position:absolute;
+		height: 3.75rem;
+		width: 0.375rem;
+		background-color: white;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		border-radius: 2px;
+	}
+}
+
+h3.sub-title{
+	font-family: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
+	color: white;
+	font-weight: 600;
+	font-style:italic;
+	font-size: 5.625rem;
+	line-height: 0.98;
+	letter-spacing: 0.04em;
+	margin:0;
+	padding-top: 0.75rem;
+}
