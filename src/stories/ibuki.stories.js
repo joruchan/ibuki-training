@@ -1,5 +1,6 @@
 import React from 'react';
-import NavBar from '../components/molecules/NavBar/NavBar';
+import Header from '../components/molecules/Header/Header';
+import Section from '../components/molecules/Section/Section';
 
 
 export default {
@@ -9,6 +10,9 @@ export default {
 
 export const Display = () => (
 
-  <NavBar />
+  <>
+    <Header frontPage />
+    <Section content="Hellooooooooooooooooooooooooooooooooooooooooooooo" />
+  </>
 
 );

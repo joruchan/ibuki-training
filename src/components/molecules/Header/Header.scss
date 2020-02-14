@@ -1,16 +1,29 @@
-header{
-	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/ibukibg.jpg");
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin:0;
+	padding: 0;
+}
+
+#root{
+	width: 100%;
+	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/ibukibg.jpg");
 	background-size: cover;
-	background-position:fixed;
+	background-position: 70%;
+	background-attachment: fixed;
+	overflow: hidden;
 }
 
 .front-page{
-	min-height: 100vh;
+	min-height: 100%;
 }
 
-.upper-wrapper{
+.wrapper{
 	max-width: 1250px;
 	margin: 0 auto;
+	padding : 0 10px;
 }
 
 .page-title{
@@ -23,19 +36,10 @@ h1{
 	font-size: 1.875rem;
 	font-weight: normal;
 	letter-spacing: 0.12em;
-	padding-left: 1.5rem;
+	text-align:center;
+	padding-left: 0.5rem;
 	position:relative;
-	&:before{
-		content:"";
-		position:absolute;
-		height: 3.75rem;
-		width: 0.375rem;
-		background-color: white;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		border-radius: 2px;
-	}
+	margin-top: -5rem;
 }
 
 h3.sub-title{
@@ -43,9 +47,71 @@ h3.sub-title{
 	color: white;
 	font-weight: 600;
 	font-style:italic;
-	font-size: 5.625rem;
+	font-size: 2.625rem;
+	text-align: center;
 	line-height: 0.98;
 	letter-spacing: 0.04em;
 	margin:0;
 	padding-top: 0.75rem;
+	margin-top: 1em;
+}
+
+
+/// ON SMALL SCREENS
+
+@media (min-width: 500px){
+	h3.sub-title{
+		font-size: 4rem;
+		
+	}
+}
+
+/// ON MED SCREENS
+
+@media (min-width: 768px){
+	header{
+		background-position:center;
+	}
+	.front-page{
+		min-height: calc(100vh - 80px);
+	}
+	.page-title{
+		margin-bottom: 0;
+	}
+	h1{
+		text-align:left;
+		padding-left: 1.5rem;
+		margin-top: 0.67em;
+		&:before{
+			content:"";
+			position:absolute;
+			height: 3.75rem;
+			width: 0.375rem;
+			background-color: white;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			border-radius: 2px;
+		}
+	}
+	h3.sub-title{
+		font-size: 5.625rem;
+		text-align: left;
+		margin-top: 0;
+	}
+}
+
+
+// DESKTOP FIRST
+
+@media (max-width: 1250px){
+	.wrapper{
+		max-width: 900px;
+	}
+}
+
+@media (max-width: 899px){
+	.wrapper{
+		max-width: 700px;
+	}
 }

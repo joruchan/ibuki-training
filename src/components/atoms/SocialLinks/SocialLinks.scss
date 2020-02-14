@@ -1,7 +1,14 @@
 .social-links{
-	background-color: rgba(255,255,255,0.25);
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.25);
 	height: 80px;
+	display:flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 10px;
+
 	img{
 		height: 48px;
+		margin-right: 20px;
 	}
 }

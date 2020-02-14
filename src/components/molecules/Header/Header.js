@@ -8,25 +8,25 @@ import ScrollDown from '../../atoms/CustomIcons/ScrollDown/ScrollDown';
 
 function Header({ frontPage }) {
   return (
-    <header className={`${frontPage ? 'front-page' : ''}`}>
-      <div className="upper-wrapper">
-        <NavBar />
-        <div className="page-title">
-          <h1>IBUKI TRAINING</h1>
-          {frontPage ? (
-            <h3 className="sub-title">
-              SCIENTIFIC
-              <br />
-              APPROACH
-              <br />
-              TO
-              <br />
-              SPORTS
-            </h3>
-          ) : ''}
-        </div>
-        {frontPage ? <ScrollDown /> : ''}
+    <header className={`${frontPage ? 'front-page' : ''} wrapper`}>
+
+      <NavBar />
+      <div className="page-title">
+        <h1>IBUKI TRAINING</h1>
+        {frontPage ? (
+          <h3 className="sub-title">
+            SCIENTIFIC
+            <br />
+            APPROACH
+            <br />
+            TO
+            <br />
+            SPORTS
+          </h3>
+        ) : ''}
       </div>
+      {frontPage ? <ScrollDown /> : ''}
+
     </header>
   );
 }

@@ -1,12 +1,3 @@
-*{
-	box-sizing: border-box;
-}
-
-body{
-	margin:0;
-	padding: 0;
-}
-
 .container{
 	max-width: 1400px;
 	padding: 0 10px;
@@ -22,6 +13,7 @@ body{
 	text-decoration: none;
 	padding: 1rem 2rem;
 	position:relative;
+	text-align: center;
 	&.active:before{
 		content: "";
 		position:absolute;
@@ -45,5 +37,17 @@ body{
 	}
 	&:hover:before{
 		width:100%;
+	}
+}
+
+
+
+
+/// SMALLER SCREENS ONLY ///
+
+@media (min-width: 768px) and (max-width: 1250px){
+	.nav__link{
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
 	}
 }
