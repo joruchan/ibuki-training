@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/molecules/Header/Header';
-import Section from '../components/molecules/Section/Section';
+import Main from '../components/molecules/Main/Main';
 
 
 export default {
@@ -12,7 +12,7 @@ export const Display = () => (
 
   <>
     <Header frontPage />
-    <Section content="Hellooooooooooooooooooooooooooooooooooooooooooooo" />
+    <Main content="Hellooooooooooooooooooooooooooooooooooooooooooooo" />
   </>
 
 );
