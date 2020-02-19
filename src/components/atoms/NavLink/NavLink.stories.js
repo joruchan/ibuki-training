@@ -3,7 +3,7 @@ import NavLink from './NavLink';
 
 
 export default {
-  title: 'NavLink',
+  title: 'atom/NavLink',
   component: NavLink,
 };
 

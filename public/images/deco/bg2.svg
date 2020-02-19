@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1424.264" height="473.893" viewBox="0 0 1424.264 473.893">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #ff5700;
+      }
+
+      .cls-1 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <g id="Group_17" data-name="Group 17" transform="translate(-247.866 -1889.768)">
+    <path id="Path_10" data-name="Path 10" class="cls-1" d="M5651.368,1956.01s-66.547-95.971-346.3-117.465-515.153,29.366-767.006,0S4228.972,1593.4,4228.972,1593.4" transform="translate(-3979.933 313.325)"/>
+    <path id="Path_11" data-name="Path 11" class="cls-2" d="M5655.855,1924.581s-62.27-85.865-342.9-105.639-516.779,27.018-769.426,0S4233.46,1593.4,4233.46,1593.4" transform="translate(-3984.421 296.506)"/>
+    <path id="Path_12" data-name="Path 12" class="cls-1" d="M5654.381,2031.215s-55-112.139-335.337-139.371-526.394,37.207-778.779,0S4231.406,1593.4,4231.406,1593.4" transform="translate(-3982.946 331.777)"/>
+  </g>
+</svg>

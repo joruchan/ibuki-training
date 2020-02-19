@@ -1,0 +1,75 @@
+@import "../../scss-resources/resources.scss";
+
+.card{
+	margin: 3.125rem 5.625rem;
+	display:flex;
+	position:relative;
+	.card-img{
+		width: 100%;
+		max-width: 780px;
+		max-height: 500px;
+
+	}
+	.card-txt{
+		max-height: 360px;
+		max-width: 650px;
+		padding: 40px;
+		right:0;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(white, 0.8);
+		position:absolute;
+		box-shadow: 10px 10px 15px rgba($orange, 0.15);
+		p{
+			@include title-typo;
+			em{
+				@include highlight;
+				display:inline-block;
+			}
+		}
+	}
+	&.pic-right{
+		justify-content: flex-end;
+
+		.card-txt{
+			left:0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+@media (max-width: 900px){
+	.card{
+		flex-direction: column;
+		.card-txt{
+			max-width: 400px;
+			p{
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+
+@media (max-width: 760px){
+	.card{
+		margin: 10px 20px;
+		.card-txt{
+			max-width: 80%;
+			max-height: none;
+			position:relative;
+			margin: 0 auto;
+			transform: translateY(-20%);
+			padding: 20px;
+			p{
+				font-size: 1rem;
+			}
+		}
+		&.pic-right{
+			.card-txt{
+				transform: translateY(-20%);
+			}
+		}
+	}
+	
+}

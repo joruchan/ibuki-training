@@ -5,10 +5,10 @@ import './ScrollDown.scss';
 function ScrollDown() {
   return (
 
-    <div className="scroll">
-      <div className="scroll__down" />
-      <div className="scroll__down" />
-      <div className="scroll__down" />
+    <div className="bg">
+      <div className="arrow" />
+      <div className="arrow" />
+      <div className="arrow" />
     </div>
 
   );

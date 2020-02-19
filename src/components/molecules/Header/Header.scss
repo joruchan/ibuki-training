@@ -1,11 +1,4 @@
-*{
-	box-sizing: border-box;
-}
 
-body{
-	margin:0;
-	padding: 0;
-}
 
 #root{
 	width: 100%;
@@ -20,7 +13,7 @@ body{
 	min-height: 100%;
 }
 
-.wrapper{
+.upper-wrapper{
 	max-width: 1250px;
 	margin: 0 auto;
 	padding : 0 10px;
@@ -30,7 +23,7 @@ body{
 	margin: 6.875rem auto;
 }
 
-h1{
+h1, h2{
 	font-family: "Montserrat", Arial, sans-serif;
 	color:white;
 	font-size: 1.875rem;
@@ -40,6 +33,11 @@ h1{
 	padding-left: 0.5rem;
 	position:relative;
 	margin-top: -5rem;
+	text-transform: uppercase;
+}
+
+h2{
+	margin-bottom: 9.375rem;
 }
 
 h3.sub-title{
@@ -54,6 +52,12 @@ h3.sub-title{
 	margin:0;
 	padding-top: 0.75rem;
 	margin-top: 1em;
+}
+
+.container{
+	max-width: 1400px;
+	padding: 0 10px;
+	margin: 0 auto;
 }
 
 
@@ -78,7 +82,7 @@ h3.sub-title{
 	.page-title{
 		margin-bottom: 0;
 	}
-	h1{
+	h1, h2{
 		text-align:left;
 		padding-left: 1.5rem;
 		margin-top: 0.67em;
@@ -105,13 +109,19 @@ h3.sub-title{
 // DESKTOP FIRST
 
 @media (max-width: 1250px){
-	.wrapper{
+	.upper-wrapper{
 		max-width: 900px;
+	}
+	.container{
+		max-width: 1000px;
 	}
 }
 
 @media (max-width: 899px){
-	.wrapper{
+	.upper-wrapper{
 		max-width: 700px;
+	}
+	.container{
+		max-width: 800px;
 	}
 }

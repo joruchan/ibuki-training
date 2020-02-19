@@ -16,7 +16,7 @@ function NavBar() {
 
   return (
     <nav>
-      <img src="/images/LogoIbukiWhite.svg" alt="Ibuki Training's logo" />
+      <a href="/" title="Back to home"><img src="/images/LogoIbukiWhite.svg" alt="Ibuki Training's logo" /></a>
       <div className={`nav-links ${toggle ? 'open' : ''}`}>{links.map((link) => <NavLink link={`/${link.toLowerCase()}`} title={link} />)}</div>
       <NavToggle clickToggle={toggleNav} toggled={toggle} />
     </nav>
