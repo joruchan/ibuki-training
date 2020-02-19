@@ -6,7 +6,7 @@ const Homepage = () => (
 
   <Main page="home">
     <section>
-      <FrontPageCard picture="images/pics/pic4.jpg" altText="People squatting">
+      <FrontPageCard picture="images/pics/pic4.jpg" altText="People squatting" moreTxt="View All">
         Group training, one on
         one sessions, workshops,
         find the format that fits
@@ -15,7 +15,7 @@ const Homepage = () => (
       </FrontPageCard>
     </section>
     <section>
-      <FrontPageCard picture="images/pics/pic2.jpg" altText="People squatting" alignment="pic-right">
+      <FrontPageCard picture="images/pics/pic2.jpg" altText="People squatting" alignment="pic-right" moreTxt="Register">
         <em>Martial arts</em>
         {' '}
         is my passion. Are you looking to
@@ -26,7 +26,7 @@ const Homepage = () => (
       </FrontPageCard>
     </section>
     <section>
-      <FrontPageCard picture="images/pics/pic3.jpg" altText="People squatting">
+      <FrontPageCard picture="images/pics/pic3.jpg" altText="People squatting" moreTxt="Contact Me">
         Lose weight, gain mass,
         get back in shape,
         perfect your technique,

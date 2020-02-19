@@ -21,6 +21,7 @@ main{
 				background-size: 101%;
 				background-position:center;
 				background-repeat: no-repeat;
+				transition: all 250ms ease-in-out;
 				&:first-of-type{
 					padding-top: 3.125rem;
 					background-image: url("/images/deco/bg1.svg");

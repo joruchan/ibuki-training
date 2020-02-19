@@ -4,11 +4,12 @@
 	margin: 3.125rem 5.625rem;
 	display:flex;
 	position:relative;
+	transition: all 250ms ease-in;
 	.card-img{
 		width: 100%;
 		max-width: 780px;
 		max-height: 500px;
-
+		transition: all 250ms ease-in;
 	}
 	.card-txt{
 		max-height: 360px;
@@ -20,6 +21,7 @@
 		background: rgba(white, 0.8);
 		position:absolute;
 		box-shadow: 10px 10px 15px rgba($orange, 0.15);
+		transition: all 250ms ease-in;
 		p{
 			@include title-typo;
 			em{
@@ -36,8 +38,103 @@
 			top: 50%;
 			transform: translateY(-50%);
 		}
+
+		.more{
+			flex-direction: row-reverse;
+			text-align: right;
+			img{
+				transform: scaleX(-1);
+			}
+		}
+
+		&:hover > .more{
+			opacity:1;
+			transform: translateX(-35%) translateY(-50%);
+			&:after{
+				width: 130%;
+			}
+			img{
+				animation: slide-left 1500ms infinite;
+
+			}
+		}
+	}
+	&:hover > .card-img{
+		transform: scale(0.95);
+	}
+	&:hover > .card-txt{
+		transform: scale(0.95) translateY(-50%);
+	}
+	&:hover > .more{
+		opacity:1;
+		transform: translateX(35%) translateY(-50%);
+		img{
+			animation: slide 1500ms infinite;
+		}
+	}
+	&:hover > .more:after{
+		width: 130%;
+		height: 250%;
+		opacity: 1;
+	}
+	.more{
+		position:absolute;
+		z-index:1;
+		top: 50%;
+		transform: translateY(-50%);
+		font-family: "Montserrat", Arial, Helvetica, sans-serif;
+		font-size: 2rem;
+		color: $black;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		opacity:0;
+		transition: all 250ms ease-in;
+		transition-delay: 150ms;
+		display:flex;
+		align-items:center;
+		img{
+			height: 40px;
+			margin-left: 2rem;
+		}
+		&:after{
+			content:"";
+			position:absolute;
+			height: 100%;
+			width: 80%;
+			left: -30px;
+			background: rgba(white, 0.5);
+			transition: all 250ms ease-in;
+			transition-delay: 200ms;
+			z-index: -1;
+			opacity: 0;
+		}
 	}
 }
+
+
+@keyframes slide{
+	from{
+		transform: translateX(0);
+		opacity: 0;
+	}
+	to{
+		transform: translateX(20px);
+		opacity:1;
+	}
+}
+
+@keyframes slide-left{
+	from{
+		transform: translateX(0) scaleX(-1);
+		opacity: 0;
+	}
+	to{
+		transform: translateX(-20px) scaleX(-1);
+		opacity:1;
+	}
+}
+
+
 
 @media (max-width: 900px){
 	.card{
