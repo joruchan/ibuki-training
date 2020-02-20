@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 
 function FrontPageCard({
-  picture, altText, alignment, children, moreTxt,
+  picture, altText, alignment, children, moreTxt, moreLink,
 }) {
   return (
     <div className={`card ${alignment}`}>
       <div className="more">
-        <p>{moreTxt}</p>
+        <p><a href={moreLink}>{moreTxt}</a></p>
         <img src="/images/icons/arrow-right.png" alt="" />
       </div>
       <img src={picture} alt={altText} className="card-img" />
@@ -26,6 +26,7 @@ FrontPageCard.propTypes = {
   children: PropTypes.string.isRequired,
   alignment: PropTypes.string,
   moreTxt: PropTypes.string.isRequired,
+  moreLink: PropTypes.string.isRequired,
 };
 
 FrontPageCard.defaultProps = {

@@ -6,7 +6,7 @@ const Homepage = () => (
 
   <Main page="home">
     <section>
-      <FrontPageCard picture="images/pics/pic4.jpg" altText="People squatting" moreTxt="View All">
+      <FrontPageCard picture="images/pics/pic4.jpg" altText="People squatting" moreTxt="View All" moreLink="/coaching">
         Group training, one on
         one sessions, workshops,
         find the format that fits
@@ -15,7 +15,7 @@ const Homepage = () => (
       </FrontPageCard>
     </section>
     <section>
-      <FrontPageCard picture="images/pics/pic2.jpg" altText="People squatting" alignment="pic-right" moreTxt="Register">
+      <FrontPageCard picture="images/pics/pic2.jpg" altText="People squatting" alignment="pic-right" moreTxt="About Yuji" moreLink="/about">
         <em>Martial arts</em>
         {' '}
         is my passion. Are you looking to
@@ -26,7 +26,7 @@ const Homepage = () => (
       </FrontPageCard>
     </section>
     <section>
-      <FrontPageCard picture="images/pics/pic3.jpg" altText="People squatting" moreTxt="Contact Me">
+      <FrontPageCard picture="images/pics/pic3.jpg" altText="People squatting" moreTxt="Contact Me" moreLink="/contact">
         Lose weight, gain mass,
         get back in shape,
         perfect your technique,

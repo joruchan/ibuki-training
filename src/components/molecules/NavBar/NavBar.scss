@@ -8,11 +8,26 @@ nav{
 	justify-content: space-between;
 	margin: 0 auto;
 	position:relative;
-
+	#animation_container{
+		max-width: 80px;
+		max-height: 80px;
+		#canvas{
+			max-width: 80px;
+			max-height: 80px;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		
+	}
 	img{
+		position:absolute;
 		width: 80px;
 		margin-left: 10px;
-		margin-top: 10px;
+		margin-top: 20px;
+		transition: all 500ms ease-in-out;
+	}
+	a:hover > img{
+		opacity:0;
 	}
 	.nav-links{
 		position: absolute;
@@ -29,10 +44,22 @@ nav{
 @media (min-width: 768px){
 	nav{
 		padding-top: 2.25rem;
+		#animation_container{
+			max-width: 200px;
+			max-height: 200px;
+			#canvas{
+				max-width: 200px;
+				max-height: 200px;
+				margin-left: 0px;
+				margin-top: 0px;
+			}
+			
+		}
 		img{
 			width: 200px;
-			margin-left: 0px;
-			margin-top: 0px;
+				height: 200px;
+				margin-left: -1px;
+				margin-top:0px;
 		}
 		.nav-links{
 			flex-direction: row;
@@ -83,6 +110,14 @@ nav{
 	nav{
 		img{
 			width: 120px;
+			height: 120px;
+			position:relative;
+		}
+		#animation_container{
+			display:none;
+		}
+		a:hover > img{
+			opacity: 1;
 		}
 	}
 }

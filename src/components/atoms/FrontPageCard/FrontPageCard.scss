@@ -44,6 +44,7 @@
 			text-align: right;
 			img{
 				transform: scaleX(-1);
+				margin-right:2rem;
 			}
 		}
 
@@ -95,6 +96,11 @@
 		img{
 			height: 40px;
 			margin-left: 2rem;
+			opacity: 0;
+		}
+		a{
+			text-decoration:none;
+			color: $black;
 		}
 		&:after{
 			content:"";
