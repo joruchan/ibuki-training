@@ -33,3 +33,9 @@ aside{
 		text-decoration: none;
 	}
 }
+
+section{
+	.content-title{
+		@include content-title;
+	}
+}
