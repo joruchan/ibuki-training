@@ -35,7 +35,7 @@ function Header({ frontPage, pageTitle }) {
 
 Header.propTypes = {
   frontPage: PropTypes.bool,
-  pageTitle: PropTypes.bool,
+  pageTitle: PropTypes.string,
 };
 
 Header.defaultProps = {

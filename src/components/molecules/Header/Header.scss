@@ -36,9 +36,7 @@ h1, h2{
 	text-transform: uppercase;
 }
 
-h2{
-	margin-bottom: 9.375rem;
-}
+
 
 h3.sub-title{
 	font-family: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
@@ -98,6 +96,11 @@ h3.sub-title{
 			border-radius: 2px;
 		}
 	}
+
+	h2{
+		margin-bottom: 9.375rem;
+	}
+	
 	h3.sub-title{
 		font-size: 5.625rem;
 		text-align: left;

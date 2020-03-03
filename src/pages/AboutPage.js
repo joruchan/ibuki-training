@@ -47,10 +47,27 @@ const AboutPage = () => (
     <section className="about-get">
       <div className="about-get__text">
         <h3 className="content-title">Get in touch</h3>
-        <p>
-          Are you looking for a FUN, JUDGMENT-FREE,
-          but especially EFFECTIVE training ?
-        </p>
+        <div className="content-paragraphs">
+          <p>
+            Are you looking for a
+            {' '}
+            <strong>FUN, JUDGMENT-FREE,</strong>
+            {' '}
+            but especially
+            {' '}
+            <strong>EFFECTIVE</strong>
+            {' '}
+            training ?
+          </p>
+          <p>
+            <strong>I am the perfect match for you.</strong>
+          </p>
+        </div>
+        <div className="content-links">
+          <a href="/" className="map-link" target="_blank">Come to Basic-Fit in Waterloo</a>
+          <a href="/register" className="register-link">Register your availabilities</a>
+          <a href="/contact" className="contact-link">Contact me</a>
+        </div>
       </div>
     </section>
   </Main>
