@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import flatpickr from "flatpickr";
 import { useForm } from "react-hook-form";
 import Main from "../components/molecules/Main/Main";
@@ -12,7 +12,6 @@ const RegisterPage = () => {
     const onSubmit = (data, e) => {
         console.log(data);
         e.target.reset();
-        let section = document.getElementsByTagName("section");
         navigate("/redirecting");
         setTimeout(() => navigate('/', true), 2000);
         window.scrollTo(0, 0);

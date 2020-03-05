@@ -6,7 +6,7 @@ import NavBar from '../NavBar/NavBar';
 import ScrollDown from '../../atoms/CustomIcons/ScrollDown/ScrollDown';
 
 
-function Header({ frontPage, pageTitle }) {
+function Header({ frontPage }) {
   return (
     <header className={`${frontPage ? 'front-page' : ''} upper-wrapper`}>
 
@@ -25,7 +25,7 @@ function Header({ frontPage, pageTitle }) {
               SPORTS
             </h3>
           </>
-        ) : (<h2>{pageTitle}</h2>)}
+        ) : ''}
       </div>
       {frontPage ? <ScrollDown /> : ''}
 
@@ -35,7 +35,6 @@ function Header({ frontPage, pageTitle }) {
 
 Header.propTypes = {
   frontPage: PropTypes.bool,
-  pageTitle: PropTypes.string,
 };
 
 Header.defaultProps = {

@@ -9,12 +9,10 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const path = useRoutes(routes);
-  console.log(path.type.name);
-  const pageTitle = usePath().slice(1);
 
   return (
     <>
-      <Header frontPage={path.type.name === 'Homepage'} pageTitle={pageTitle} />
+      <Header frontPage={path.type.name === 'Homepage'} />
       {path || <NotFoundPage />}
       <Footer />
     </>
