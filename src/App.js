@@ -12,8 +12,6 @@ function App() {
   console.log(path.type.name);
   const pageTitle = usePath().slice(1);
 
-  // const isFront = (path === '/about');
-
   return (
     <>
       <Header frontPage={path.type.name === 'Homepage'} pageTitle={pageTitle} />

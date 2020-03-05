@@ -4,6 +4,7 @@ import AboutPage from '../pages/AboutPage';
 import CoachingPage from '../pages/CoachingPage';
 import RegisterPage from '../pages/RegisterPage';
 import ContactPage from '../pages/ContactPage';
+import Redirecting from '../pages/Redirecting';
 
 const routes = {
   '/': () => <Homepage />,
@@ -11,6 +12,7 @@ const routes = {
   '/coaching': () => <CoachingPage />,
   '/register': () => <RegisterPage />,
   '/contact': () => <ContactPage />,
+  '/redirecting': () => <Redirecting />,
 };
 
 export default routes;
