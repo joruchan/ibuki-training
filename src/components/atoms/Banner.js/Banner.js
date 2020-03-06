@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 function Banner({ text, img }) {
   return (
-    <>
-      <div className="banner" style={{ backgroundImage: `url(${img})` }} />
+    <div className="banner">
+      <div className="banner-img" style={{ backgroundImage: `url(${img})` }} />
       <div className="banner-txt"><p>{text}</p></div>
-    </>
+    </div>
   );
 }
 

@@ -6,6 +6,12 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
+	&-img{
+			width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	}
 
 	&-txt {
 		display: flex;
@@ -43,5 +49,14 @@
 			bottom: -1px;
 			right: -1px;
 		}
+	}
+}
+
+
+@media (max-width: 1250px){
+	.banner-txt{
+		padding: 10px 40px;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 }
