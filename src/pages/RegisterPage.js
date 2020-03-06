@@ -45,6 +45,7 @@ const RegisterPage = () => {
                 <input
                     type="text"
                     name={`register_date[${nmb}]`}
+                    className="additional-date"
                     placeholder="Select the day, then a time, then click OK"
                     ref={register({ required: false })}
                     aria-label="Date"
