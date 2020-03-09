@@ -5,6 +5,7 @@ import CoachingPage from '../pages/CoachingPage';
 import RegisterPage from '../pages/RegisterPage';
 import ContactPage from '../pages/ContactPage';
 import Redirecting from '../pages/Redirecting';
+import AdminPage from '../pages/AdminPage';
 
 const routes = {
   '/': () => <Homepage />,
@@ -13,6 +14,7 @@ const routes = {
   '/register': () => <RegisterPage />,
   '/contact': () => <ContactPage />,
   '/redirecting': () => <Redirecting />,
+  '/dashboard-admin': () => <AdminPage />,
 };
 
 export default routes;

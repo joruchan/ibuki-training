@@ -7,7 +7,7 @@
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Personal website of Yuji Galand, personal trainer in Waterloo" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400i,700i,800i|Montserrat:400,500,700&display=swap" rel="stylesheet" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
         <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,12 +27,14 @@
         <script>
             var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
             function init() {
-                canvas = document.getElementById("canvas");
-                anim_container = document.getElementById("animation_container");
-                dom_overlay_container = document.getElementById("dom_overlay_container");
-                var comp = AdobeAn.getComposition("5AA77621FEA8074F8B9DCC28D6A64E9A");
-                var lib = comp.getLibrary();
-                handleComplete({}, comp);
+                if (document.getElementById("animation_container")) {
+                    canvas = document.getElementById("canvas");
+                    anim_container = document.getElementById("animation_container");
+                    dom_overlay_container = document.getElementById("dom_overlay_container");
+                    var comp = AdobeAn.getComposition("5AA77621FEA8074F8B9DCC28D6A64E9A");
+                    var lib = comp.getLibrary();
+                    handleComplete({}, comp);
+                }
             }
             function handleComplete(evt, comp) {
                 //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.

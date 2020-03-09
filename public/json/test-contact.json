@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "contact_name": "Jordane",
+        "contact_phone": "",
+        "contact_email": "jordane.frechet@gmail.com",
+        "contact_message": "Coucou c'est un test"
+    },
+    {
+        "id": 2,
+        "contact_name": "Joruchan",
+        "contact_phone": "",
+        "contact_email": "jordane.frechet@gmail.com",
+        "contact_message": "Coucou c'est un deuxi�me test"
+    },
+    {
+        "id": 3,
+        "contact_name": "PommeVerte",
+        "contact_phone": "",
+        "contact_email": "jordane.frechet@gmail.com",
+        "contact_message": "Coucou c'est un troisi�me test"
+    }
+]

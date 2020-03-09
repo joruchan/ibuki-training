@@ -13,7 +13,7 @@ const RegisterPage = () => {
         console.log(data);
         e.target.reset();
         navigate("/redirecting");
-        setTimeout(() => navigate('/', true), 2000);
+        setTimeout(() => navigate('/', true), 2600);
         window.scrollTo(0, 0);
     };
 

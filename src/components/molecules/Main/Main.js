@@ -19,7 +19,7 @@ function Main({ children, page }) {
 }
 
 Main.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.instanceOf(Array).isRequired,
   page: PropTypes.string.isRequired,
 };
 

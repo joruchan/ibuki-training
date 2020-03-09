@@ -23,7 +23,7 @@ function FrontPageCard({
 FrontPageCard.propTypes = {
   picture: PropTypes.string.isRequired,
   altText: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.instanceOf(Array).isRequired,
   alignment: PropTypes.string,
   moreTxt: PropTypes.string.isRequired,
   moreLink: PropTypes.string.isRequired,

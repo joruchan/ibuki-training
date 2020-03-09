@@ -12,9 +12,9 @@ function App() {
 
   return (
     <>
-      <Header frontPage={path.type.name === 'Homepage'} />
+      {path.type.name === 'AdminPage' ? '' : <Header frontPage={path.type.name === 'Homepage'} />}
       {path || <NotFoundPage />}
-      <Footer />
+      {path.type.name === 'AdminPage' ? '' : <Footer />}
     </>
   );
 }
