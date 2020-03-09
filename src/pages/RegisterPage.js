@@ -24,7 +24,7 @@ const RegisterPage = () => {
             type="text"
             name={`register_date[0]`}
             id="first-date"
-            placeholder="Select the day, then a time, then click OK"
+            placeholder="Select the day & time, then click OK"
             ref={register({ required: true })}
             aria-label="Date"
         />,
@@ -33,7 +33,7 @@ const RegisterPage = () => {
             type="text"
             name={`register_date[1]`}
             id="second-date"
-            placeholder="Select the day, then a time, then click OK"
+            placeholder="Select the day & time, then click OK"
             ref={register({ required: true })}
             aria-label="Date"
         />
@@ -46,7 +46,7 @@ const RegisterPage = () => {
                     type="text"
                     name={`register_date[${nmb}]`}
                     className="additional-date"
-                    placeholder="Select the day, then a time, then click OK"
+                    placeholder="Select the day & time, then click OK"
                     ref={register({ required: false })}
                     aria-label="Date"
                 />

@@ -60,3 +60,13 @@
 		transform: translate(-50%, -50%);
 	}
 }
+
+@media (max-width: 768px){
+	.banner{
+		height: 100px;
+		&-txt{
+			font-size: 2rem;
+			text-align: center;
+		}
+	}
+}

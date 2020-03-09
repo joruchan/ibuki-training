@@ -104,6 +104,7 @@
 	.about{
 		.content{
 			section{
+				padding: 50px;
 				h3.content-title{
 					font-size: 3rem;
 				}
@@ -131,21 +132,9 @@
 }
 
 
-// Screens until 700px wide
-
-@media (max-width: 900px){
-	.about{
-		.content{
-			section{
-				padding: 50px;
-			}
-		}
-	}
-}
-
 // Mobile screens
 
-@media (max-width: 500px){
+@media (max-width: 767px){
 	.about{
 		.content{
 			section{
@@ -163,7 +152,7 @@
 				background: none;
 				&__text{
 					p{
-						font-size: 1rem;
+						font-size: 1.1rem;
 					}
 				}
 				.divider{
@@ -177,7 +166,7 @@
 					.content-paragraphs {
 						p:first-of-type{
 							margin-top: 5rem;
-							font-size: 1rem;
+							font-size: 1.2rem;
 						}
 					p:nth-of-type(2){
 							font-size: 1.8rem;

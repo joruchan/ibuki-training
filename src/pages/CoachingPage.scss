@@ -176,34 +176,83 @@
 
 // MEDIAQUERIES
 
-
-@media (max-width: 1250px){
+@media (max-width: 1250px) {
     .coaching {
         .content {
-            section{
-                .formula-details{
+            section {
+                .formula-details {
                     flex-direction: column;
                     align-items: center;
-                    &__text{
+                    &__text {
                         width: 100%;
                         text-align: center;
                     }
-                    &__boxes{
+                    &__boxes {
                         flex-direction: row;
-                        &-single{
+                        &-single {
                             margin-top: 2rem;
                         }
-                        &-single.m-top.best{
+                        &-single.m-top.best {
                             margin-left: 2rem;
                             margin-top: 2rem;
                         }
                     }
-                    
                 }
-                .boxing-training{
-                    .box-details{
+                .boxing-training {
+                    .box-details {
                         margin-left: 0;
                         padding: 10px 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MOBILE
+
+@media (max-width: 768px) {
+    .coaching {
+        .content {
+            .coaching-text {
+                padding: 20px;
+                h3.content-title {
+                    font-size: 2rem;
+                    padding-left: 30px;
+                    &:before {
+                        width: 15px;
+                        height: 3px;
+                    }
+                }
+                p {
+                    display: none;
+                }
+            }
+            section {
+                .formula-details {
+                    padding: 20px;
+                    margin-top: 2rem;
+                    h5 {
+                        padding: 0;
+                    }
+                    &__boxes {
+                        flex-direction: column;
+                        &-single {
+                            .box-details {
+                                p {
+                                    font-size: 1.6rem;
+                                }
+                            }
+                            h6 {
+                                font-size: 2rem;
+                            }
+                            &.m-top.best {
+                                margin: 2rem 0;
+                            }
+                            &.best {
+                                margin: 2rem 0;
+                            }
+                        }
                     }
                 }
             }

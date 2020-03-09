@@ -5,7 +5,7 @@
         section {
             position: relative;
             padding: 100px;
-            
+
             .register-text {
                 overflow-x: hidden;
                 p {
@@ -106,22 +106,22 @@
                     button:disabled {
                         display: none;
                     }
-                    &__single:not(:nth-of-type(1)):not(:nth-of-type(2)){
-                        &:after{
-                            content:"(optional)";
-                            position:absolute;
-                            height: 63px;
-                            width: 100%;
-                            right: 20px;
-                            text-align: right;
-                            top: 0;
-                            color: rgba($black, 0.5);
-                            display:flex;
-                            align-items: center;
-                            justify-content: flex-end;
-                            font-style: italic;
-                            pointer-events: none;
-                        }
+                }
+                .dates-inputs__single:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+                    &:after {
+                        content: "(optional)";
+                        position: absolute;
+                        height: 63px;
+                        width: 100%;
+                        right: 20px;
+                        text-align: right;
+                        top: 0;
+                        color: rgba($black, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        font-style: italic;
+                        pointer-events: none;
                     }
                 }
                 .dates-text {
@@ -144,27 +144,25 @@
                 background: rgba($orange, 0.6);
                 border: none;
                 cursor: pointer;
-                position:relative;
-                z-index:1;
+                position: relative;
+                z-index: 1;
                 &:before {
                     content: "";
                     width: 0;
                     height: 100%;
                     position: absolute;
-                    background-color: rgba($orange,0.5);
+                    background-color: rgba($orange, 0.5);
                     left: 0;
                     top: 0;
                     transition: 0.4s;
                     z-index: -1;
-                    opacity:0.5;
-                    
+                    opacity: 0.5;
                 }
                 &:hover:before {
                     width: 100%;
                     left: auto;
                     right: 0;
                     opacity: 1;
-                    
                 }
             }
             #add-date {
@@ -200,5 +198,135 @@
     }
 }
 
-// J'en suis ici
-// Je veux : finir la register page
+// MEDIAQUERIES
+
+@media (max-width: 1250px) {
+    .register {
+        .content {
+            section {
+                .register-form {
+                    .info-inputs,
+                    .dates-inputs {
+                        width: 500px;
+                        .validation-error {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .register {
+        .content {
+            section {
+                .register-form {
+                    &__info,
+                    &__dates {
+                        margin-left: 0;
+                        .info-inputs,
+                        .dates-inputs {
+                            .validation-error {
+                                color: transparent;
+                                &:before {
+                                    height: 30px;
+                                    width: 30px;
+                                    top: 35%;
+                                    left: -60px;
+                                }
+                            }
+                        }
+                    }
+                    button#submit {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .register {
+        .content {
+            section {
+                padding: 20px;
+                .register-text {
+                    padding: 0;
+                    h3.content-title {
+                        font-size: 2rem;
+                        padding-left: 30px;
+                        &:before {
+                            width: 15px;
+                            height: 3px;
+                        }
+                    }
+                    p {
+                        font-size: 1.1rem;
+                        margin: 2rem 0;
+                    }
+                }
+                .register-form {
+                    &__info,
+                    &__dates {
+                        margin-left: 0;
+                        padding: 0;
+                        &:before {
+                            display: none;
+                        }
+                        h4 {
+                            font-size: 1.5rem;
+                            margin: 2rem 0;
+                            padding: 0;
+                            span {
+                                font-size: 1rem;
+                            }
+                        }
+                        .info-inputs,
+                        .dates-inputs {
+                            width: 100%;
+                            input {
+                                font-size: 1rem;
+                            }
+                            .validation-error {
+                                color: transparent;
+                                &:before {
+                                    height: 30px;
+                                    width: 30px;
+                                    top: 35%;
+                                    left: -60px;
+                                }
+                            }
+                        }
+                    }
+                    &__dates {
+                        .dates-inputs__single {
+                            input {
+                                font-size: 0.8rem;
+                                padding-left: 0.8rem;
+                            }
+                        }
+                        .dates-inputs__single:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+                            &:after {
+                                right: 10px;
+
+                                top: 45%;
+                                font-size: 0.8rem;
+                            }
+                        }
+                        .dates-text {
+                            font-size: 1.1rem;
+                        }
+                    }
+                    button#submit {
+                        margin: 0;
+                        padding: 10px 40px;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
