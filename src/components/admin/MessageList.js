@@ -4,27 +4,27 @@ import {
 } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
-const UserList = (props) => {
+const MessageList = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   return (
     <List {...props}>
       {isSmall ? (
         <SimpleList
-          primaryText={(record) => record.register_name}
-          secondaryText={(record) => record.register_email}
-          tertiaryText={(record) => record.register_date}
+          primaryText={(record) => record.contact_name}
+          secondaryText={(record) => record.contact_email}
+          tertiaryText={(record) => record.contact_message}
         />
       ) : (
         <Datagrid rowClick="edit">
           <TextField source="id" />
-          <TextField source="register_name" />
-          <EmailField source="register_email" />
-          <TextField source="register_phone" />
-          <TextField source="register_date" />
+          <TextField source="contact_name" />
+          <EmailField source="contact_email" />
+          <TextField source="contact_phone" />
+          <TextField source="contact_message" />
         </Datagrid>
       )}
     </List>
   );
 };
 
-export default UserList;
+export default MessageList;

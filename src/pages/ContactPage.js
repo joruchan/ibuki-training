@@ -11,15 +11,24 @@ const ContactPage = () => {
 
     const onSubmit = (data, e) => {
         console.log(data);
+        fetch("http://localhost:5001/send_message", {
+            method: "post",
+            body: JSON.stringify(data),
+            cors: true,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        }).then(() => console.log("fetch contact done"));
         e.target.reset();
         navigate("/redirecting");
         setTimeout(() => navigate("/", true), 2600);
         window.scrollTo(0, 0);
     };
 
-	const [noErrorName, setNoErrorName] = useState(false);
-	const [noErrorEmail, setNoErrorEmail] = useState(false);
-	const [noErrorMessage, setNoErrorMessage] = useState(false);
+    const [noErrorName, setNoErrorName] = useState(false);
+    const [noErrorEmail, setNoErrorEmail] = useState(false);
+    const [noErrorMessage, setNoErrorMessage] = useState(false);
 
     return (
         <Main page="contact">
@@ -32,7 +41,7 @@ const ContactPage = () => {
                 <div className="contact-form">
                     <form className="contact-form__form" onSubmit={handleSubmit(onSubmit)}>
                         <div className="contact-form__info">
-							<h4>About you</h4>	
+                            <h4>About you</h4>
                             <div className="info-inputs">
                                 <div className="info-inputs__single">
                                     <input
@@ -58,7 +67,7 @@ const ContactPage = () => {
                                         </div>
                                     )}
                                 </div>
-								<div className="info-inputs__single">
+                                <div className="info-inputs__single">
                                     <input type="number" name="contact_phone" placeholder="+32" ref={register} aria-label="Phone" />
                                 </div>
                                 <div className="info-inputs__single">
@@ -91,13 +100,13 @@ const ContactPage = () => {
                                         </div>
                                     )}
                                 </div>
-								<h4>What would you like to know?</h4>
-								<div className="info-inputs__single">
+                                <h4>What would you like to know?</h4>
+                                <div className="info-inputs__single">
                                     <textarea
                                         name="contact_message"
                                         placeholder="Votre message ici . . ."
                                         ref={register({
-                                            required: true,
+                                            required: true
                                         })}
                                         aria-label="Message"
                                         onChange={e => {
@@ -111,11 +120,13 @@ const ContactPage = () => {
                                         }}
                                     />
                                     {errors.contact_message?.type === "required" && <span className="validation-error">This field is required</span>}
-                                    {noErrorMessage && !errors.contact_message && document.querySelector("textarea[name=contact_message]").value !== "" && (
-                                        <div className="validation-success">
-                                            <img src="/images/icons/check.svg" alt="checkmark icon" />
-                                        </div>
-                                    )}
+                                    {noErrorMessage &&
+                                        !errors.contact_message &&
+                                        document.querySelector("textarea[name=contact_message]").value !== "" && (
+                                            <div className="validation-success">
+                                                <img src="/images/icons/check.svg" alt="checkmark icon" />
+                                            </div>
+                                        )}
                                 </div>
                             </div>
                         </div>
@@ -125,7 +136,7 @@ const ContactPage = () => {
                         </button>
                     </form>
                 </div>
-				<div className="divider" />
+                <div className="divider" />
             </section>
         </Main>
     );

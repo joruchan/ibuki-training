@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import flatpickr from "flatpickr";
+import Flatpickr from "react-flatpickr";
 import { useForm } from "react-hook-form";
 import Main from "../components/molecules/Main/Main";
 import "./RegisterPage.scss";
@@ -11,11 +11,21 @@ const RegisterPage = () => {
     });
     const onSubmit = (data, e) => {
         console.log(data);
+        fetch("http://localhost:5001/register", {
+            method: "post",
+            body: JSON.stringify(data),
+            cors: true,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        }).then(() => console.log("fetch contact done")).catch((err) => console.log("Register form did not submit properly " + err));
         e.target.reset();
         navigate("/redirecting");
         setTimeout(() => navigate('/', true), 2600);
         window.scrollTo(0, 0);
     };
+
 
     const [noErrorName, setNoErrorName] = useState(false);
     const [noErrorEmail, setNoErrorEmail] = useState(false);

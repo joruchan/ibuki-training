@@ -19,7 +19,7 @@ function Main({ children, page }) {
 }
 
 Main.propTypes = {
-  children: PropTypes.instanceOf(Array).isRequired,
+  children: PropTypes.shape([], {}).isRequired,
   page: PropTypes.string.isRequired,
 };
 
