@@ -1,9 +1,13 @@
-import React, { useState} from "react";
-import Flatpickr from "react-flatpickr";
+import React, { useState, useEffect } from "react";
+import flatpickr from "flatpickr";
 import { useForm } from "react-hook-form";
 import Main from "../components/molecules/Main/Main";
 import "./RegisterPage.scss";
 import { navigate } from "hookrouter";
+import "flatpickr/dist/themes/material_orange.css";
+import { French } from "flatpickr/dist/l10n/fr.js";
+import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
+import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
 
 const RegisterPage = () => {
     const { register, handleSubmit, errors, triggerValidation, reset } = useForm({
@@ -26,10 +30,10 @@ const RegisterPage = () => {
         window.scrollTo(0, 0);
     };
 
-
     const [noErrorName, setNoErrorName] = useState(false);
     const [noErrorEmail, setNoErrorEmail] = useState(false);
     const [dateInputs, setDateInputs] = useState([
+
         <input
             type="text"
             name={`register_date[0]`}
@@ -55,7 +59,7 @@ const RegisterPage = () => {
                 <input
                     type="text"
                     name={`register_date[${nmb}]`}
-                    className="additional-date"
+                    className={`additional-date${nmb} flatpickr`}
                     placeholder="Select the day & time, then click OK"
                     ref={register({ required: false })}
                     aria-label="Date"
@@ -65,7 +69,36 @@ const RegisterPage = () => {
             document.getElementById("add-date").setAttribute("disabled", "true");
             return <p className="max-reached">Maximum amount of dates reached</p>;
         }
+
     };
+
+    const flatpickrOptions = {
+        enableTime: true,
+        dateFormat: "Le D j F Y à H:i",
+        time_24hr: true,
+        altInput: true,
+        altFormat: "Le j F Y à H:i",
+        minDate: new Date().fp_incr(2),
+        maxDate: new Date().fp_incr(30),
+        minTime: "09:00",
+        maxTime: "16:30",
+        plugins: [new confirmDatePlugin({})],
+        disable: [
+            function (date) {
+                return (date.getDay() === 3);
+            }
+        ],
+        locale: French
+    };
+
+    useEffect(() => {
+        flatpickr("#first-date", flatpickrOptions);
+        flatpickr("#second-date", flatpickrOptions);
+    }, []);
+
+    useEffect(() => {
+        if (dateInputs.length > 2) flatpickr(`.additional-date${dateInputs.length - 1}`, flatpickrOptions);
+    }, [dateInputs]);
 
     return (
         <Main page="register">
@@ -142,7 +175,10 @@ const RegisterPage = () => {
                             <h4>
                                 Choose your availabilities <span>(min 2 choices)</span>
                             </h4>
+
                             <div className="dates-inputs">
+                                <p className="dates-instructions">Hours are from 9 AM til 4:30PM, every day except Wednesday.</p>
+                                <p className="dates-instructions"><span>This is not an online appointment booking form</span>, and pressing "Send" does <span>not</span> mean the spot is booked. I will personally contact you to schedule your appointment.</p>
                                 {dateInputs.map((input, index) => (
                                     <div className="dates-inputs__single">
                                         {input}
@@ -151,7 +187,7 @@ const RegisterPage = () => {
                                         )}
                                     </div>
                                 ))}
-                                <button id="add-date" type="button" onClick={() => setDateInputs([...dateInputs, generateInput(dateInputs.length)])}>
+                                <button id="add-date" type="button" onClick={() => { setDateInputs([...dateInputs, generateInput(dateInputs.length)]) }}>
                                     +
                                 </button>
                             </div>

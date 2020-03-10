@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
+    "flatpickr": "^4.6.3",
     "hookrouter": "^1.2.3",
     "mongodb": "^3.5.4",
     "node-sass": "^4.13.1",
@@ -16,7 +17,6 @@
     "react": "^16.12.0",
     "react-admin": "^3.3.0",
     "react-dom": "^16.12.0",
-    "react-flatpickr": "^3.10.0",
     "react-hook-form": "^4.10.1",
     "react-scripts": "3.3.1"
   },
