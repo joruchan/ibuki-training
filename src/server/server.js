@@ -2,18 +2,28 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
+const jwtExpress = require('./helpers/jwt');
+const errorHandler = require('./helpers/error-handlers');
+const authenticateUser = require('./helpers/users');
 
 const url = 'mongodb://localhost:27017/';
-
-// variables
 const app = express();
 const port = 5001;
 
-// middlewares
 app.use(express.json());
 app.use(cors());
+app.use(jwtExpress());
+app.use(errorHandler);
 
-// server config
+// POST REQUEST FOR AUTHENTIFICATION
+app.post("/authenticate", function(req, res){
+  console.log("Authenticating....");
+  console.log(req.body);
+  authenticateUser.authenticate(req.body)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .catch(err => next(err));
+})
+
 // POST REQUEST FOR CONTACT FORM
 app.post('/send_message', (req, res) => {
   const data = req.body;

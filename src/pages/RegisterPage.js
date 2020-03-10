@@ -17,7 +17,7 @@ const RegisterPage = () => {
         console.log(data);
         fetch("http://localhost:5001/register", {
             method: "post",
-            body: JSON.stringify(data),
+            body: data,
             cors: true,
             headers: {
                 Accept: "application/json",

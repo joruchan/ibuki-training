@@ -1,6 +1,7 @@
 import React from 'react';
 import { Admin, Resource, EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
+import { usePermissions } from 'react-admin';
 
 import './AdminPage.scss';
 
@@ -17,6 +18,8 @@ import MessageEdit from '../components/admin/MessageEdit';
 const dataProvider = jsonServerProvider('http://localhost:5001'); // http://localhost:5001/
 
 const AdminPage = () => {
+  const { permissions } = usePermissions();
+  console.log(permissions)
   fetch('http://localhost:5001/bookings').then((res) => res.json()).then(console.log);
   return (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
