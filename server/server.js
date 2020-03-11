@@ -44,27 +44,6 @@ app.post('/authenticate', (req, res, next) => {
 // POST REQUEST FOR CONTACT FORM
 app.post('/send_message', (req, res) => {
   const data = req.body;
-
-  axios
-    .get('http://localhost:5001/messages')
-    .then((apiRes) => apiRes.data)
-    .then((array) => (array[array.length - 1] ? array[array.length - 1].id + 1 : array.length))
-    .then((length) => {
-      data.id = length;
-      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
-        console.log('Connected to the database to add an entry...');
-        const dbLibrary = dbMongo.db('ibuki_db');
-        dbLibrary.collection('email_requests').insertOne(data, (errorDB, result) => {
-          if (errorDB) throw errorDB;
-          console.log(`Sucessfully added your entry ${data.contact_name} to the db`);
-          res.setHeader('Content-Type', 'application/json');
-          res.send(result);
-          dbMongo.close();
-        });
-      });
-    })
-    .catch((error) => error);
-
   const mailOptions = {
     from: 'coachyuji@gmail.com', // sender address
     to: 'jordane.frechet@gmail.com', // list of receivers
@@ -86,19 +65,8 @@ app.post('/send_message', (req, res) => {
           </p>`, // plain text body
   };
 
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-});
-
-// POST REQUEST FOR REGISTER FORM
-app.post('/register', (req, res) => {
-  const data = req.body;
-
   axios
-    .get('/bookings')
+    .get('http://localhost:5001/messages')
     .then((apiRes) => apiRes.data)
     .then((array) => (array[array.length - 1] ? array[array.length - 1].id + 1 : array.length))
     .then((length) => {
@@ -106,16 +74,27 @@ app.post('/register', (req, res) => {
       MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
         console.log('Connected to the database to add an entry...');
         const dbLibrary = dbMongo.db('ibuki_db');
-        dbLibrary.collection('registered_customers').insertOne(data, (errorDB, result) => {
+        dbLibrary.collection('email_requests').insertOne(data, (errorDB, result) => {
           if (errorDB) throw errorDB;
-          console.log(`Sucessfully added your entry ${data.register_name} to the db`);
+          console.log(`Sucessfully added your entry ${data.contact_name} to the db`);
           res.setHeader('Content-Type', 'application/json');
           res.send(result);
           dbMongo.close();
         });
       });
     })
-    .catch((error) => error);
+    .catch((error) => error)
+    .then(() => transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.log(err);
+      }
+    }));
+});
+
+// POST REQUEST FOR REGISTER FORM
+app.post('/register', (req, res) => {
+  const data = req.body;
+  console.log('on est dans register');
 
   const mailOptions = {
     from: 'coachyuji@gmail.com', // sender address
@@ -138,11 +117,30 @@ app.post('/register', (req, res) => {
           </p>`,
   };
 
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      console.log(err);
-    }
-  });
+  axios
+    .get('http://localhost:5001/bookings')
+    .then((apiRes) => apiRes.data)
+    .then((array) => (array[array.length - 1] ? array[array.length - 1].id + 1 : array.length))
+    .then((length) => {
+      data.id = length;
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
+        console.log('Connected to the database to add an entry...');
+        const dbLibrary = dbMongo.db('ibuki_db');
+        dbLibrary.collection('registered_customers').insertOne(data, (errorDB, result) => {
+          if (errorDB) throw errorDB;
+          console.log(`Sucessfully added your entry ${data.register_name} to the db`);
+          res.setHeader('Content-Type', 'application/json');
+          res.send(result);
+          dbMongo.close();
+        });
+      });
+    })
+    .catch((error) => console.log(error))
+    .then(() => transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.log(err);
+      }
+    }));
 });
 
 // GET REQUEST WITH PARAMS FOR BOOKINGS

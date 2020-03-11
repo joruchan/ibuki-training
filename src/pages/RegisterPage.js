@@ -215,7 +215,9 @@ const RegisterPage = () => {
                                     <a href="/contact">Contact me</a> and I&apos;ll see what I can do.
                                 </p>
                             </div>
+                            <label for="agree" className="terms-agreement"><input type="checkbox" ref={register({ required: true })} name="privacy" id="agree" /><span class="checkmark"></span> <p>I accept that any information filled out in the form above can be stored for personal organization purposes and will be deleted upon an appointment placed. You authorize us to contact you with regards to your future appointment and we will not send any ads or newsletter.</p></label>
                             <ReCAPTCHA sitekey="6Lfoc-AUAAAAALecMs2M6dD05g7KSRDZeubL70we" onChange={setCaptchaRes} size="normal"/>
+                            {errors.privacy && <p className="form-error-message">Please accept our terms</p>}
                             {errors.captcha && <p className="form-error-message">{errorMessage}</p>}
                         </div>
                         

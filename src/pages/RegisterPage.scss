@@ -49,7 +49,7 @@
                     h4 {
                         margin-bottom: 2rem;
                     }
-                    div:nth-child(4) > div {
+                    div:last-of-type > div {
                         padding-bottom: 2rem;
                     }
                     .form-error-message {
@@ -58,6 +58,62 @@
                         bottom: 40px;
                         left: 360px;
                         font-weight: 600;
+                    }
+                    .terms-agreement {
+                        display:block;
+                        cursor: pointer;
+                        position: relative;
+                        p{font-size: 0.9rem;
+                            font-style: italic;
+                            max-width: 700px;
+                        padding-left: 40px;
+                    margin-bottom: 2rem;}
+                        .checkmark {
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            height: 25px;
+                            width: 25px;
+                            background: #e6e6e6;
+                            display: block;
+                            pointer-events: none;
+                            top: 50%;
+    transform: translateY(-50%);
+                        }
+                        .checkmark:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                            left: 8px;
+                            top: 2px;
+                            width: 7px;
+                            height: 13px;
+                            border: solid #fff;
+                            border-width: 0 3px 3px 0;
+                            transform: rotate(45deg);
+                            pointer-events: none;
+                        }
+                        input {
+                            margin-right: 1rem;
+                            position: absolute;
+                            z-index: -1;
+                            opacity: 0;
+
+                            &:focus ~ .checkmark,
+                            &:hover ~ .checkmark {
+                                background: #ccc;
+                            }
+                            &:checked ~ .checkmark {
+                                background: $orange;
+                            }
+                            &:checked ~ .checkmark:after {
+                                display: block;
+                            }
+                            &:checked:focus ~ .checkmark,
+                            &:hover:checked ~ .checkmark {
+                                background: darken($orange, 1);
+                            }
+                        }
                     }
                 }
 
@@ -275,8 +331,8 @@
                             }
                         }
                     }
-                    &__dates{
-                        div:last-of-type > div{
+                    &__dates {
+                        div:last-of-type > div {
                             transform: scale(0.93);
                             transform-origin: 0 0;
                         }
