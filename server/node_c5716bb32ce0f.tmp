@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
+const nodemailer = require('nodemailer');
 const jwtExpress = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handlers');
 const authenticateUser = require('./helpers/users');
@@ -10,19 +11,28 @@ const url = 'mongodb://localhost:27017/';
 const app = express();
 const port = 5001;
 
-app.use(express.json());
 app.use(cors());
+
+app.use(express.json());
 app.use(jwtExpress());
 app.use(errorHandler);
 
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'jordanedevtest@gmail.com',
+    pass: '40Ln0l5W&8',
+  },
+});
+
+
 // POST REQUEST FOR AUTHENTIFICATION
-app.post("/authenticate", function(req, res){
-  console.log("Authenticating....");
-  console.log(req.body);
+app.post('/authenticate', (req, res, next) => {
   authenticateUser.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(err => next(err));
-})
+    .then((user) => (user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' })))
+    .catch((err) => next(err));
+});
 
 // POST REQUEST FOR CONTACT FORM
 app.post('/send_message', (req, res) => {
@@ -40,13 +50,26 @@ app.post('/send_message', (req, res) => {
         dbLibrary.collection('email_requests').insertOne(data, (errorDB, result) => {
           if (errorDB) throw errorDB;
           console.log(`Sucessfully added your entry ${data.contact_name} to the db`);
-          res.setHeader('Content-Type', 'text/html');
-          res.send('<H1>Record updated</H1>');
+          res.setHeader('Content-Type', 'application/json');
+          res.send(result);
           dbMongo.close();
         });
       });
     })
     .catch((error) => error);
+
+
+  const mailOptions = {
+    from: 'coachyuji@gmail.com', // sender address
+    to: 'jordane.frechet@gmail.com', // list of receivers
+    subject: 'Nouveau message envoyé via le formulaire de contact', // Subject line
+    html: `<p>Bonjour Yuji, <br /><br / ><br /> ${data.contact_name} T'a envoyé un message. <br /> Son adresse mail : ${data.contact_email} <br /> Téléphone : ${data.contact_phone} <br /><br /><br /> "${data.contact_message}" </p>`, // plain text body
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) console.log(err);
+    else console.log(info);
+  });
 });
 
 // POST REQUEST FOR REGISTER FORM
@@ -54,7 +77,7 @@ app.post('/register', (req, res) => {
   const data = req.body;
 
   axios
-    .get('http://localhost:5001/bookings')
+    .get('/bookings')
     .then((apiRes) => apiRes.data)
     .then((array) => (array[array.length - 1] ? array[array.length - 1].id + 1 : array.length))
     .then((length) => {
@@ -65,8 +88,8 @@ app.post('/register', (req, res) => {
         dbLibrary.collection('registered_customers').insertOne(data, (errorDB, result) => {
           if (errorDB) throw errorDB;
           console.log(`Sucessfully added your entry ${data.register_name} to the db`);
-          res.setHeader('Content-Type', 'text/html');
-          res.send('<H1>Record updated</H1>');
+          res.setHeader('Content-Type', 'application/json');
+          res.send(result);
           dbMongo.close();
         });
       });
@@ -77,7 +100,7 @@ app.post('/register', (req, res) => {
 // GET REQUEST WITH PARAMS FOR BOOKINGS
 app.get('/bookings', (req, res) => {
   let result;
-
+  console.log('on est dans /bookings');
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     console.log('Connected to the database to get the list of entries...');
     const dbLibrary = dbMongo.db('ibuki_db');
@@ -87,7 +110,7 @@ app.get('/bookings', (req, res) => {
       .toArray((error, resultDb) => {
         if (error) throw error;
         result = resultDb;
-        res.set({ 'Content-type': 'text/json', 'X-Total-Count': resultDb.length, 'Access-Control-Expose-Headers': 'X-Total-Count' });
+        res.set({ 'Content-type': 'application/json', 'X-Total-Count': resultDb.length, 'Access-Control-Expose-Headers': 'X-Total-Count' });
         res.send(result);
         dbMongo.close();
       });
@@ -102,7 +125,7 @@ app.get('/bookings/:id', (req, res) => {
       .collection('registered_customers')
       .findOne({ id: parseInt(newId, 10) }, (error, resultFind) => {
         if (error) throw error;
-        res.setHeader('Content-Type', 'text/json');
+        res.setHeader('Content-Type', 'application/json');
         res.send(resultFind);
       });
   });

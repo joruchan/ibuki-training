@@ -1,10 +1,9 @@
 import React from 'react';
-import { Admin, Resource, EditGuesser } from 'react-admin';
+import {
+  Admin, Resource, fetchUtils, EditGuesser, usePermissions,
+} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
-import { usePermissions } from 'react-admin';
-
 import './AdminPage.scss';
-
 import GroupIcon from '@material-ui/icons/Group';
 import EmailIcon from '@material-ui/icons/MailOutline';
 import UserList from '../components/admin/UserList';
@@ -14,12 +13,18 @@ import UserEdit from '../components/admin/UserEdit';
 import MessageList from '../components/admin/MessageList';
 import MessageEdit from '../components/admin/MessageEdit';
 
+const httpClient = (url, options = {}) => {
+  if (!options.headers) {
+    options.headers = new Headers({ Accept: 'application/json' });
+  }
+  const token = localStorage.getItem('token');
+  options.headers.set('Authorization', `Bearer ${token}`);
+  return fetchUtils.fetchJson(url, options);
+};
 
-const dataProvider = jsonServerProvider('http://localhost:5001'); // http://localhost:5001/
+const dataProvider = jsonServerProvider('http://localhost:5001', httpClient); // http://localhost:5001/
 
 const AdminPage = () => {
-  const { permissions } = usePermissions();
-  console.log(permissions)
   fetch('http://localhost:5001/bookings').then((res) => res.json()).then(console.log);
   return (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>

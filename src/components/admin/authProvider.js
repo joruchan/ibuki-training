@@ -10,7 +10,7 @@ export default {
       headers: new Headers({ 'Content-Type': 'application/json' }),
     });
     return fetch(request)
-      .then(response => {
+      .then((response) => {
         if (response.status < 200 || response.status >= 300) {
           throw new Error(response.statusText);
         }
@@ -36,14 +36,14 @@ export default {
     }
     return Promise.resolve();
   },
+
   // appelé quand le user navigue vers une autre location pour valider l'authentification
-  checkAuth: () => {
-    return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
-  },
+  checkAuth: () => (localStorage.getItem('token') ? Promise.resolve() : Promise.reject()),
+
   // appelé quand le user navigue vers une autre location pour valider les permissions/roles
   getPermissions: () => {
     const role = localStorage.getItem('permissions');
     console.log(role);
     return role ? Promise.resolve(role) : Promise.reject();
-  }
+  },
 };

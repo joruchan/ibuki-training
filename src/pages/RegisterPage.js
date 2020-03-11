@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import Main from "../components/molecules/Main/Main";
 import "./RegisterPage.scss";
 import { navigate } from "hookrouter";
+import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
 import "flatpickr/dist/themes/material_orange.css";
 import { French } from "flatpickr/dist/l10n/fr.js";
-import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
-import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+
+
 
 const RegisterPage = () => {
     const { register, handleSubmit, errors, triggerValidation, reset } = useForm({
@@ -17,7 +19,7 @@ const RegisterPage = () => {
         console.log(data);
         fetch("http://localhost:5001/register", {
             method: "post",
-            body: data,
+            body: JSON.stringify(data),
             cors: true,
             headers: {
                 Accept: "application/json",
