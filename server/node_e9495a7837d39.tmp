@@ -3,6 +3,7 @@ const cors = require('cors');
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 const nodemailer = require('nodemailer');
+const prerender = require('prerender');
 const { email } = require('./config.json');
 const jwtExpress = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handlers');
@@ -11,6 +12,11 @@ const authenticateUser = require('./helpers/users');
 const url = 'mongodb://localhost:27017/';
 const app = express();
 const port = 5001;
+
+app.use(require('prerender-node').set('prerenderToken', 'K6PzmDPi1DNRml5l6Q88').blacklisted('^/dashboard-admin'));
+
+const server = prerender();
+server.start();
 
 app.use(cors());
 
@@ -88,7 +94,6 @@ app.post('/send_message', (req, res) => {
       if (err) {
         console.log(err);
       }
-      console.log(`email sent${info}`);
     }));
 });
 
@@ -123,7 +128,6 @@ app.post('/register', (req, res) => {
     .then((apiRes) => apiRes.data)
     .then((array) => (array[array.length - 1] ? array[array.length - 1].id + 1 : array.length))
     .then((length) => {
-      console.log('on a eu les données de bookings et on va faire des trucs avec');
       data.id = length;
       MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
         console.log('Connected to the database to add an entry...');
@@ -141,8 +145,6 @@ app.post('/register', (req, res) => {
     .then(() => transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
         console.log(err);
-      } else {
-        console.log(info);
       }
     }));
 });

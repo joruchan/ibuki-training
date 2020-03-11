@@ -3,6 +3,7 @@ const cors = require('cors');
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 const nodemailer = require('nodemailer');
+const prerender = require('prerender');
 const { email } = require('./config.json');
 const jwtExpress = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handlers');
@@ -11,6 +12,11 @@ const authenticateUser = require('./helpers/users');
 const url = 'mongodb://localhost:27017/';
 const app = express();
 const port = 5001;
+
+app.use(require('prerender-node').set('prerenderToken', 'K6PzmDPi1DNRml5l6Q88').blacklisted('^/dashboard-admin'));
+
+const server = prerender();
+server.start();
 
 app.use(cors());
 
