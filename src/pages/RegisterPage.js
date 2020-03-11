@@ -5,17 +5,22 @@ import Main from "../components/molecules/Main/Main";
 import "./RegisterPage.scss";
 import { navigate } from "hookrouter";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
-import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
+import "flatpickr/dist/plugins/confirmDate/confirmDate.css";
 import "flatpickr/dist/themes/material_orange.css";
 import { French } from "flatpickr/dist/l10n/fr.js";
-
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 const RegisterPage = () => {
-    const { register, handleSubmit, errors, triggerValidation, reset } = useForm({
-        mode: "onChange"
+    const { register, handleSubmit, errors, setError , triggerValidation, reset } = useForm({
+        mode: "onChange",
     });
     const onSubmit = (data, e) => {
+        console.log(captchaRes);
+        if (captchaRes.length === 0){
+            setError("captcha", "notMatch", "Please validate the CAPTCHA");
+            setErrorMessage(errors.captcha?.message);
+            return false;
+        }
         console.log(data);
         fetch("http://localhost:5001/register", {
             method: "post",
@@ -25,17 +30,20 @@ const RegisterPage = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             }
-        }).then(() => console.log("fetch contact done")).catch((err) => console.log("Register form did not submit properly " + err));
+        })
+            .then(() => console.log("fetch contact done"))
+            .catch(err => console.log("Register form did not submit properly " + err));
         e.target.reset();
         navigate("/redirecting");
-        setTimeout(() => navigate('/', true), 2600);
+        setTimeout(() => navigate("/", true), 2600);
         window.scrollTo(0, 0);
     };
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [captchaRes, setCaptchaRes] = useState("");
     const [noErrorName, setNoErrorName] = useState(false);
     const [noErrorEmail, setNoErrorEmail] = useState(false);
     const [dateInputs, setDateInputs] = useState([
-
         <input
             type="text"
             name={`register_date[0]`}
@@ -71,12 +79,11 @@ const RegisterPage = () => {
             document.getElementById("add-date").setAttribute("disabled", "true");
             return <p className="max-reached">Maximum amount of dates reached</p>;
         }
-
     };
 
     const flatpickrOptions = {
         enableTime: true,
-        dateFormat: "Le D j F Y à H:i",
+        dateFormat: "Le l j F Y à H:i",
         time_24hr: true,
         altInput: true,
         altFormat: "Le j F Y à H:i",
@@ -86,8 +93,8 @@ const RegisterPage = () => {
         maxTime: "16:30",
         plugins: [new confirmDatePlugin({})],
         disable: [
-            function (date) {
-                return (date.getDay() === 3);
+            function(date) {
+                return date.getDay() === 3;
             }
         ],
         locale: French
@@ -180,7 +187,10 @@ const RegisterPage = () => {
 
                             <div className="dates-inputs">
                                 <p className="dates-instructions">Hours are from 9 AM til 4:30PM, every day except Wednesday.</p>
-                                <p className="dates-instructions"><span>This is not an online appointment booking form</span>, and pressing "Send" does <span>not</span> mean the spot is booked. I will personally contact you to schedule your appointment.</p>
+                                <p className="dates-instructions">
+                                    <span>This is not an online appointment booking form</span>, and pressing "Send" does <span>not</span> mean the
+                                    spot is booked. I will personally contact you to schedule your appointment.
+                                </p>
                                 {dateInputs.map((input, index) => (
                                     <div className="dates-inputs__single">
                                         {input}
@@ -189,7 +199,13 @@ const RegisterPage = () => {
                                         )}
                                     </div>
                                 ))}
-                                <button id="add-date" type="button" onClick={() => { setDateInputs([...dateInputs, generateInput(dateInputs.length)]) }}>
+                                <button
+                                    id="add-date"
+                                    type="button"
+                                    onClick={() => {
+                                        setDateInputs([...dateInputs, generateInput(dateInputs.length)]);
+                                    }}
+                                >
                                     +
                                 </button>
                             </div>
@@ -199,8 +215,14 @@ const RegisterPage = () => {
                                     <a href="/contact">Contact me</a> and I&apos;ll see what I can do.
                                 </p>
                             </div>
+                            <ReCAPTCHA sitekey="6Lfoc-AUAAAAALecMs2M6dD05g7KSRDZeubL70we" onChange={setCaptchaRes} size="normal"/>
+                            {errors.captcha && <p className="form-error-message">{errorMessage}</p>}
                         </div>
-                        <button type="submit" id="submit">SEND</button>
+                        
+                        <button type="submit" id="submit">
+                            SEND
+                        </button>
+                        
                     </form>
                 </div>
                 <div className="divider" />

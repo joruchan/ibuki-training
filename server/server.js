@@ -3,6 +3,7 @@ const cors = require('cors');
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 const nodemailer = require('nodemailer');
+const { email } = require('./config.json');
 const jwtExpress = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handlers');
 const authenticateUser = require('./helpers/users');
@@ -17,19 +18,25 @@ app.use(express.json());
 app.use(jwtExpress());
 app.use(errorHandler);
 
-
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'jordanedevtest@gmail.com',
-    pass: '40Ln0l5W&8',
-  },
+  service: email.service,
+  auth: email.auth,
 });
 
 
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // POST REQUEST FOR AUTHENTIFICATION
 app.post('/authenticate', (req, res, next) => {
-  authenticateUser.authenticate(req.body)
+  authenticateUser
+    .authenticate(req.body)
     .then((user) => (user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' })))
     .catch((err) => next(err));
 });
@@ -58,17 +65,31 @@ app.post('/send_message', (req, res) => {
     })
     .catch((error) => error);
 
-
   const mailOptions = {
     from: 'coachyuji@gmail.com', // sender address
     to: 'jordane.frechet@gmail.com', // list of receivers
     subject: 'Nouveau message envoyé via le formulaire de contact', // Subject line
-    html: `<p>Bonjour Yuji, <br /><br / ><br /> ${data.contact_name} T'a envoyé un message. <br /> Son adresse mail : ${data.contact_email} <br /> Téléphone : ${data.contact_phone} <br /><br /><br /> "${data.contact_message}" </p>`, // plain text body
+    html: `<p>Bonjour Yuji, 
+          <br /><br / ><br /> 
+          <strong>Nouveau message de :</strong> 
+          ${data.contact_name} 
+          <br /> 
+          <strong>E-Mail :</strong> 
+          ${data.contact_email} 
+          <br /> 
+          <strong>Téléphone</strong> : 
+          ${data.contact_phone} 
+          <br /><br /> 
+          <strong>Message : </strong>
+          <br />
+          "${escapeHtml(data.contact_message)}" 
+          </p>`, // plain text body
   };
 
   transporter.sendMail(mailOptions, (err, info) => {
-    if (err) console.log(err);
-    else console.log(info);
+    if (err) {
+      console.log(err);
+    }
   });
 });
 
@@ -95,6 +116,33 @@ app.post('/register', (req, res) => {
       });
     })
     .catch((error) => error);
+
+  const mailOptions = {
+    from: 'coachyuji@gmail.com', // sender address
+    to: 'jordane.frechet@gmail.com', // list of receivers
+    subject: 'Nouvel enregistrement de disponibilités', // Subject line
+    html: `<p>Bonjour Yuji, 
+          <br /><br / ><br /> 
+          <strong>Nouvel enregistrement de :</strong> 
+          ${data.register_name} 
+          <br /> 
+          <strong>E-Mail :</strong> 
+          ${data.register_email} 
+          <br /> 
+          <strong>Téléphone</strong> : 
+          ${data.register_phone} 
+          <br /><br /> 
+          <strong>Dates enregistrées : </strong>
+          <br />
+          ${data.register_date.map((date) => `${date}<br />`)} 
+          </p>`,
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 });
 
 // GET REQUEST WITH PARAMS FOR BOOKINGS
@@ -121,13 +169,11 @@ app.get('/bookings/:id', (req, res) => {
   const newId = req.params.id;
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('registered_customers')
-      .findOne({ id: parseInt(newId, 10) }, (error, resultFind) => {
-        if (error) throw error;
-        res.setHeader('Content-Type', 'application/json');
-        res.send(resultFind);
-      });
+    dbLibrary.collection('registered_customers').findOne({ id: parseInt(newId, 10) }, (error, resultFind) => {
+      if (error) throw error;
+      res.setHeader('Content-Type', 'application/json');
+      res.send(resultFind);
+    });
   });
 });
 
@@ -136,20 +182,22 @@ app.put('/bookings/:id', (req, res) => {
   console.log(req.body);
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('registered_customers')
-      .findOneAndUpdate({ id: parseInt(newId, 10) }, {
+    dbLibrary.collection('registered_customers').findOneAndUpdate(
+      { id: parseInt(newId, 10) },
+      {
         $set: {
           register_name: req.body.register_name,
           register_phone: req.body.register_phone,
           register_email: req.body.register_email,
           register_date: req.body.register_date,
         },
-      }, (error, resultFindAndUpdate) => {
+      },
+      (error, resultFindAndUpdate) => {
         if (error) throw error;
         res.set({ 'Content-type': 'text/json' });
         res.send(resultFindAndUpdate);
-      });
+      },
+    );
   });
 });
 
@@ -158,16 +206,13 @@ app.delete('/bookings/:id', (req, res) => {
   console.log(req.body);
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('registered_customers')
-      .findOneAndDelete({ id: parseInt(newId, 10) }, (error, resultFindAndDelete) => {
-        if (error) throw error;
-        res.set({ 'Content-type': 'text/json' });
-        res.send(resultFindAndDelete);
-      });
+    dbLibrary.collection('registered_customers').findOneAndDelete({ id: parseInt(newId, 10) }, (error, resultFindAndDelete) => {
+      if (error) throw error;
+      res.set({ 'Content-type': 'text/json' });
+      res.send(resultFindAndDelete);
+    });
   });
 });
-
 
 // GET REQUEST WITH PARAMS FOR EMAILS
 app.get('/messages', (req, res) => {
@@ -193,13 +238,11 @@ app.get('/messages/:id', (req, res) => {
   const newId = req.params.id;
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('email_requests')
-      .findOne({ id: parseInt(newId, 10) }, (error, resultFind) => {
-        if (error) throw error;
-        res.setHeader('Content-Type', 'text/json');
-        res.send(resultFind);
-      });
+    dbLibrary.collection('email_requests').findOne({ id: parseInt(newId, 10) }, (error, resultFind) => {
+      if (error) throw error;
+      res.setHeader('Content-Type', 'text/json');
+      res.send(resultFind);
+    });
   });
 });
 
@@ -208,20 +251,22 @@ app.put('/messages/:id', (req, res) => {
   console.log(req.body);
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('email_requests')
-      .findOneAndUpdate({ id: parseInt(newId, 10) }, {
+    dbLibrary.collection('email_requests').findOneAndUpdate(
+      { id: parseInt(newId, 10) },
+      {
         $set: {
           contact_name: req.body.contact_name,
           contact_email: req.body.contact_email,
           contact_phone: req.body.contact_phone,
           contact_message: req.body.contact_message,
         },
-      }, (error, resultFindAndUpdate) => {
+      },
+      (error, resultFindAndUpdate) => {
         if (error) throw error;
         res.set({ 'Content-type': 'text/json' });
         res.send(resultFindAndUpdate);
-      });
+      },
+    );
   });
 });
 
@@ -230,13 +275,11 @@ app.delete('/messages/:id', (req, res) => {
   console.log(req.body);
   MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err, dbMongo) => {
     const dbLibrary = dbMongo.db('ibuki_db');
-    dbLibrary
-      .collection('email_requests')
-      .findOneAndDelete({ id: parseInt(newId, 10) }, (error, resultFindAndDelete) => {
-        if (error) throw error;
-        res.set({ 'Content-type': 'text/json' });
-        res.send(resultFindAndDelete);
-      });
+    dbLibrary.collection('email_requests').findOneAndDelete({ id: parseInt(newId, 10) }, (error, resultFindAndDelete) => {
+      if (error) throw error;
+      res.set({ 'Content-type': 'text/json' });
+      res.send(resultFindAndDelete);
+    });
   });
 });
 

@@ -1,3 +1,10 @@
 {
-    "secret" : "aishiteru"
+    "secret": "aishiteru",
+    "email": {
+        "service": "gmail",
+        "auth": {
+            "user": "jordanedevtest@gmail.com",
+            "pass": "40Ln0l5W&8"
+        }
+    }
 }

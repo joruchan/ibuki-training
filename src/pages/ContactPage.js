@@ -3,13 +3,19 @@ import Main from "../components/molecules/Main/Main";
 import "./ContactPage.scss";
 import { useForm } from "react-hook-form";
 import { navigate } from "hookrouter";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactPage = () => {
-    const { register, handleSubmit, errors, triggerValidation, reset } = useForm({
-        mode: "onChange"
+    const { register, handleSubmit, errors, setError , triggerValidation, reset } = useForm({
+        mode: "onChange",
     });
 
     const onSubmit = (data, e) => {
+        if (captchaRes.length === 0){
+            setError("captcha", "notMatch", "Please validate the CAPTCHA");
+            setErrorMessage(errors.captcha?.message);
+            return false;
+        }
         console.log(data);
         fetch("http://localhost:5001/send_message", {
             method: "post",
@@ -26,6 +32,8 @@ const ContactPage = () => {
         window.scrollTo(0, 0);
     };
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [captchaRes, setCaptchaRes] = useState("");
     const [noErrorName, setNoErrorName] = useState(false);
     const [noErrorEmail, setNoErrorEmail] = useState(false);
     const [noErrorMessage, setNoErrorMessage] = useState(false);
@@ -129,6 +137,8 @@ const ContactPage = () => {
                                         )}
                                 </div>
                             </div>
+                            <ReCAPTCHA sitekey="6Lfoc-AUAAAAALecMs2M6dD05g7KSRDZeubL70we" onChange={setCaptchaRes} size="normal"/>
+                            {errors.captcha && <p className="form-error-message">{errorMessage}</p>}
                         </div>
 
                         <button type="submit" id="submit">

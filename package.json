@@ -22,6 +22,7 @@
     "react": "^16.12.0",
     "react-admin": "^3.3.0",
     "react-dom": "^16.12.0",
+    "react-google-recaptcha": "^2.0.1",
     "react-hook-form": "^4.10.1",
     "react-scripts": "3.3.1"
   },

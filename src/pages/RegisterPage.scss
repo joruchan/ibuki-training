@@ -21,6 +21,7 @@
                     padding-left: 50px;
                     margin-left: 70px;
                     position: relative;
+                    transition: height 250ms ease-in-out;
                     h4 {
                         font-size: 2.5rem;
                         font-weight: bold;
@@ -43,9 +44,20 @@
                         left: 0;
                     }
                 }
-                &__dates{
-                    h4{
+                &__dates {
+                    position: relative;
+                    h4 {
                         margin-bottom: 2rem;
+                    }
+                    div:nth-child(4) > div {
+                        padding-bottom: 2rem;
+                    }
+                    .form-error-message {
+                        color: $red;
+                        position: absolute;
+                        bottom: 40px;
+                        left: 360px;
+                        font-weight: 600;
                     }
                 }
 
@@ -64,6 +76,7 @@
                         border-radius: 5px;
                         border: 1px solid #707070;
                         margin-bottom: 32px;
+                        animation: slideUp 500ms forwards;
                     }
                     &__single {
                         position: relative;
@@ -111,18 +124,18 @@
                     button:disabled {
                         display: none;
                     }
-                    .dates-instructions{
+                    .dates-instructions {
                         margin: 1rem 0;
                         line-height: 1.5;
-                        &:last-of-type{
+                        &:last-of-type {
                             padding-bottom: 1rem;
                         }
-                        span{
+                        span {
                             font-weight: 600;
                         }
                     }
                 }
-                .dates-inputs__single:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+                .dates-inputs__single:not(:nth-of-type(1)):not(:nth-of-type(2)):not(:nth-of-type(9)) {
                     &:after {
                         content: "(optional)";
                         position: absolute;
@@ -137,6 +150,7 @@
                         justify-content: flex-end;
                         font-style: italic;
                         pointer-events: none;
+                        animation: slideUp 500ms forwards;
                     }
                 }
                 .dates-text {
@@ -148,6 +162,7 @@
                 }
                 padding-bottom: 15rem;
             }
+
             button#submit {
                 margin-left: 70px;
                 padding: 10px 60px;
@@ -260,6 +275,16 @@
                             }
                         }
                     }
+                    &__dates{
+                        div:last-of-type > div{
+                            transform: scale(0.93);
+                            transform-origin: 0 0;
+                        }
+                        .form-error-message {
+                            bottom: 20px;
+                            left: 0;
+                        }
+                    }
                     button#submit {
                         margin-left: 0;
                     }
@@ -339,5 +364,16 @@
                 }
             }
         }
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

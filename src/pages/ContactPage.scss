@@ -112,6 +112,19 @@
                         display: none;
                     }
                 }
+
+                form > div > div:nth-child(3) > div {
+                    padding-bottom: 2rem;
+                }
+
+                .form-error-message {
+                    color: $red;
+                    position: absolute;
+                    bottom: 40px;
+                    left: 360px;
+                    font-weight: 600;
+                }
+
                 button#submit {
                     margin-left: 70px;
                     padding: 10px 60px;
@@ -215,7 +228,6 @@
                                     }
                                 }
                                 .validation-success {
-                                 
                                     top: 20px;
                                     right: 15px;
                                 }
@@ -227,6 +239,14 @@
                                 right: 10px;
                             }
                         }
+                        div:not(.info-inputs) > div {
+                            transform: scale(0.93);
+                            transform-origin: 0 0;
+                        }
+                    }
+                    .form-error-message {
+                        bottom: 20px;
+                        left: 0;
                     }
                     button#submit {
                         margin-left: 0;
