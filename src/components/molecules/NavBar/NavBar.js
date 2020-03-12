@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './NavBar.scss';
 
 import NavLink from '../../atoms/NavLink/NavLink';
@@ -6,14 +7,14 @@ import NavToggle from '../../atoms/NavLink/NavToggle';
 
 
 function NavBar() {
-  const links = ['About', 'Coaching', 'Register', 'Contact'];
+  const { t, i18n } = useTranslation('translations');
+  const links = [t('About'), t('Coaching'), t('Register'), t('Contact')];
 
   const [toggle, setToggle] = useState(false);
 
   const toggleNav = () => {
     setToggle(!toggle);
   };
-
   return (
     <nav>
       <a href="/" title="Back to home">

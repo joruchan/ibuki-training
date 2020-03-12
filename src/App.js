@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useRoutes, usePath } from 'hookrouter';
 
 import './App.scss';
@@ -11,11 +11,11 @@ function App() {
   const path = useRoutes(routes);
 
   return (
-    <>
+    <Suspense fallback="Loading...">
       {path.type.name === 'AdminPage' ? '' : <Header frontPage={path.type.name === 'Homepage'} />}
       {path || <NotFoundPage />}
       {path.type.name === 'AdminPage' ? '' : <Footer />}
-    </>
+    </Suspense>
   );
 }
 
