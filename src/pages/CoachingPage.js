@@ -2,8 +2,11 @@ import React from 'react';
 import Main from '../components/molecules/Main/Main';
 import './CoachingPage.scss';
 import Banner from '../components/atoms/Banner.js/Banner';
+import { useTitle } from 'hookrouter';
 
-const CoachingPage = () => (
+const CoachingPage = () => {
+  useTitle('Yuji Galand | Coaching');
+return(
   <Main page="coaching">
     <div className="coaching-text">
       <h3 className="content-title">Formulas</h3>
@@ -153,6 +156,6 @@ const CoachingPage = () => (
       </div>
     </section>
   </Main>
-);
+)};
 
 export default CoachingPage;

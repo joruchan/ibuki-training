@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Main from "../components/molecules/Main/Main";
 import "./ContactPage.scss";
 import { useForm } from "react-hook-form";
-import { navigate } from "hookrouter";
+import { navigate, useTitle } from "hookrouter";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactPage = () => {
+    useTitle('Yuji Galand | Contact');
+
     const { register, handleSubmit, errors, setError , triggerValidation, reset } = useForm({
         mode: "onChange",
     });

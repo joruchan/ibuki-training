@@ -6,7 +6,6 @@ function Footer() {
 
   useEffect(() => {
     localStorage.setItem('i18nextLng', language);
-    localStorage.setItem('language', language);
   }, [language]);
 
   return (
@@ -16,8 +15,8 @@ function Footer() {
         id="language"
         onChange={(e) => {
           setLanguage(e.target.value);
-          window.location.reload();
-          window.scrollTo(0, 0);
+          window.location.reload(true);
+          window.scrollTo(0,0);
         }}
       >
         <option value="fr" selected={language.includes('fr') ? 'selected' : false}>Français</option>

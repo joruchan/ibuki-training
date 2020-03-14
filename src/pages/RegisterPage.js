@@ -3,7 +3,7 @@ import flatpickr from "flatpickr";
 import { useForm } from "react-hook-form";
 import Main from "../components/molecules/Main/Main";
 import "./RegisterPage.scss";
-import { navigate } from "hookrouter";
+import { navigate, useTitle } from "hookrouter";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
 import "flatpickr/dist/plugins/confirmDate/confirmDate.css";
 import "flatpickr/dist/themes/material_orange.css";
@@ -11,6 +11,7 @@ import { French } from "flatpickr/dist/l10n/fr.js";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const RegisterPage = () => {
+    useTitle("Yuji Galand | Register");
     const { register, handleSubmit, errors, setError , triggerValidation, reset } = useForm({
         mode: "onChange",
     });

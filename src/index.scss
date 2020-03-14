@@ -17,6 +17,15 @@ body{
 	}
 }
 
+#root{
+	width: 100%;
+	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/ibukibg.jpg");
+	background-size: cover;
+	background-position: 70%;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+
 aside{
 	padding-bottom: 5rem;
 }

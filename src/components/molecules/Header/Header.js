@@ -6,11 +6,13 @@ import NavBar from '../NavBar/NavBar';
 import ScrollDown from '../../atoms/CustomIcons/ScrollDown/ScrollDown';
 
 
+
 function Header({ frontPage }) {
   return (
     <header className={`${frontPage ? 'front-page' : ''} upper-wrapper`}>
 
       <NavBar />
+
       <div className="page-title">
         {frontPage ? (
           <>

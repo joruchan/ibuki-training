@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import sanitize from '../helpers/sanitize';
 import Main from '../components/molecules/Main/Main';
 import './AboutPage.scss';
+import { useTitle } from 'hookrouter';
 
 
 const AboutPage = () => {
+  useTitle('Yuji Galand | About');
   const { t, i18n } = useTranslation('translations');
   const parser = new DOMParser();
   return (

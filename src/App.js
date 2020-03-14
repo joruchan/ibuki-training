@@ -7,16 +7,17 @@ import Footer from './components/atoms/Footer/Footer';
 import routes from './routes/routes';
 import NotFoundPage from './pages/NotFoundPage';
 import Loader from "./components/atoms/Loader";
+import BackToTop from './components/atoms/BackToTop';
 
 
 function App() {
   const path = useRoutes(routes);
-
   return (
     <Suspense fallback={<Loader />}>
       {path.type.name === 'AdminPage' ? '' : <Header frontPage={path.type.name === 'Homepage'} />}
       {path || <NotFoundPage />}
       {path.type.name === 'AdminPage' ? '' : <Footer />}
+      <BackToTop />
     </Suspense>
   );
 }
