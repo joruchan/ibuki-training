@@ -305,7 +305,7 @@
                     }
                     .form-error-message {
                         bottom: 20px;
-                        left: 0;
+                        left: 50px;
                     }
                     button#submit {
                         margin-left: 0;
@@ -362,6 +362,9 @@
                         margin: 0;
                         padding: 10px 40px;
                         font-size: 1.5rem;
+                    }
+                    .form-error-message {
+                        left: 0px;
                     }
                 }
             }
