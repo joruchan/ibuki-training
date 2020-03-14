@@ -2,9 +2,9 @@ import React from 'react';
 import Main from '../components/molecules/Main/Main';
 import FrontPageCard from '../components/atoms/FrontPageCard/FrontPageCard';
 
-const Homepage = () => (
+const Homepage = () => {
 
-  <Main page="home">
+  return (<Main page="home">
     <section>
       <FrontPageCard picture="images/pics/pic4.jpg" altText="People squatting" moreTxt="View All" moreLink="/coaching">
         Group training, one on
@@ -45,6 +45,7 @@ const Homepage = () => (
     </aside>
   </Main>
 
-);
+  )
+};
 
 export default Homepage;

@@ -284,6 +284,42 @@
     }
 }
 
+body > div.flatpickr-calendar.hasTime.animate.open.arrowTop.showTimeInput > div.flatpickr-time.time24hr > div > input{
+    font-size: 1.4rem;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    height: 60px;
+}
+
+.flatpickr-time{
+    max-height:60px !important;
+    height: 60px !important;
+    border-radius: 0px !important;
+}
+
+.flatpickr-time-separator{
+    line-height: 60px;
+}
+
+div.flatpickr-calendar.hasTime.animate.open.arrowTop.showTimeInput > div.flatpickr-confirm.lightTheme.visible{
+    background: rgb(254, 154, 104);
+    font-size: 1.5rem;
+    padding: 20px 0;
+    max-height: 60px;
+    height:auto;
+    color: black;
+    border-radius: 0 0 5px 5px;
+    svg{
+        margin-left: 10px;
+        fill: black;
+    }
+    &:hover{
+        color: white;
+        & svg{
+            fill : white;
+        }
+    }
+}
+
 // MEDIAQUERIES
 
 @media (max-width: 1250px) {

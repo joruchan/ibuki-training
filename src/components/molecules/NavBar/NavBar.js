@@ -8,7 +8,7 @@ import NavToggle from '../../atoms/NavLink/NavToggle';
 
 function NavBar() {
   const { t, i18n } = useTranslation('translations');
-  const links = [t('About'), t('Coaching'), t('Register'), t('Contact')];
+  const links = ['About', 'Coaching', 'Register', 'Contact'];
 
   const [toggle, setToggle] = useState(false);
 
@@ -29,7 +29,7 @@ function NavBar() {
           />
         </div>
       </a>
-      <div className={`nav-links ${toggle ? 'open' : ''}`}>{links.map((link) => <NavLink link={`/${link.toLowerCase()}`} title={link} />)}</div>
+      <div className={`nav-links ${toggle ? 'open' : ''}`}>{links.map((link) => <NavLink link={`/${link.toLowerCase()}`} title={t(link)} />)}</div>
       <NavToggle clickToggle={toggleNav} toggled={toggle} />
     </nav>
   );

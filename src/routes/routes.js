@@ -6,6 +6,7 @@ import RegisterPage from '../pages/RegisterPage';
 import ContactPage from '../pages/ContactPage';
 import Redirecting from '../pages/Redirecting';
 import AdminPage from '../pages/AdminPage';
+import Privacy from '../pages/Privacy';
 
 const routes = {
   '/': () => <Homepage />,
@@ -14,6 +15,7 @@ const routes = {
   '/register': () => <RegisterPage />,
   '/contact': () => <ContactPage />,
   '/redirecting': () => <Redirecting />,
+  '/privacy': () => <Privacy />,
   '/dashboard-admin': () => <AdminPage />,
 };
 

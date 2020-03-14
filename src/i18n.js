@@ -8,7 +8,7 @@ import translationJp from './locales/ja/translations.json';
 
 const languageDetector = new LanguageDetector(null, {
   order: ['localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
-  lookupLocalStorage: 'language',
+  lookupLocalStorage: 'i18nextLng',
   caches: ['localStorage'],
 });
 
