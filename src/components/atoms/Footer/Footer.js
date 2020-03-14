@@ -18,10 +18,12 @@ function Footer() {
           window.location.reload(true);
           window.scrollTo(0,0);
         }}
+        defaultValue={language.substring(0,2)
+        }
       >
-        <option value="fr" selected={language.includes('fr') ? 'selected' : false}>Français</option>
-        <option value="en" selected={language.includes('en') ? 'selected' : false}>English</option>
-        <option value="ja" selected={language.includes('ja') ? 'selected' : false}>日本</option>
+        <option value="fr" >Français</option>
+        <option value="en" >English</option>
+        <option value="ja" >日本</option>
       </select></div>
       
 

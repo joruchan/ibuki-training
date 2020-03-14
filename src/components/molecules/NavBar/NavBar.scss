@@ -1,33 +1,20 @@
 @import "../../scss-resources/resources.scss";
 
 nav{
-	
 	width: 100%;
 	display:flex;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0 auto;
-	position:relative;
-	#animation_container{
-		max-width: 80px;
-		max-height: 80px;
-		#canvas{
-			max-width: 80px;
-			max-height: 80px;
-			margin-left: 10px;
-			margin-top: 10px;
-		}
-		
-	}
+	position:relative;	
 	img{
-		position:absolute;
 		width: 80px;
 		margin-left: 10px;
 		margin-top: 20px;
-		transition: all 500ms ease-in-out;
+		transition: transform 750ms cubic-bezier(0.42, 0.11, 0, 2.26);
 	}
-	a:hover > img{
-		opacity:0;
+	> a:hover > img{
+		transform: rotate(-10deg);
 	}
 	.nav-links{
 		position: absolute;

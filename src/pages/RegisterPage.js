@@ -12,7 +12,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const RegisterPage = () => {
     useTitle("Yuji Galand | Register");
-    const { register, handleSubmit, errors, setError , triggerValidation, reset } = useForm({
+    const { register, handleSubmit, errors, setError , triggerValidation } = useForm({
         mode: "onChange",
     });
     const onSubmit = (data, e) => {

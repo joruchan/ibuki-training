@@ -23,43 +23,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-        <script src="%PUBLIC_URL%/images/IbukiLogo.js"></script>
-        <script>
-            var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-            function init() {
-                if (document.getElementById("animation_container")) {
-                    canvas = document.getElementById("canvas");
-                    anim_container = document.getElementById("animation_container");
-                    dom_overlay_container = document.getElementById("dom_overlay_container");
-                    var comp = AdobeAn.getComposition("5AA77621FEA8074F8B9DCC28D6A64E9A");
-                    var lib = comp.getLibrary();
-                    handleComplete({}, comp);
-                }
-            }
-            function handleComplete(evt, comp) {
-                //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-                var lib = comp.getLibrary();
-                var ss = comp.getSpriteSheet();
-                exportRoot = new lib.animationHover();
-                stage = new lib.Stage(canvas);
-                stage.enableMouseOver();
-                //Registers the "tick" event listener.
-                fnStartAnimation = function() {
-                    stage.addChild(exportRoot);
-                    createjs.Ticker.framerate = lib.properties.fps;
-                    createjs.Ticker.addEventListener("tick", stage);
-                };
-                //Code to support hidpi screens and responsive scaling.
-                AdobeAn.makeResponsive(false, "both", false, 1, [canvas, anim_container, dom_overlay_container]);
-                AdobeAn.compositionLoaded(lib.properties.id);
-                fnStartAnimation();
-            }
-        </script>
 
         <title>IBUKI TRAINING</title>
     </head>
-    <body onload="init();">
+    <body>
         <noscript>You need to enable JavaScript to run this website.</noscript>
         <div id="root"></div>
         

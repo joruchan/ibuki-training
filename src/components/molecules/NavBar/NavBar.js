@@ -7,7 +7,7 @@ import NavToggle from '../../atoms/NavLink/NavToggle';
 
 
 function NavBar() {
-  const { t, i18n } = useTranslation('translations');
+  const { t } = useTranslation('translations');
   const links = ['About', 'Coaching', 'Register', 'Contact'];
 
   const [toggle, setToggle] = useState(false);
@@ -19,17 +19,8 @@ function NavBar() {
     <nav>
       <a href="/" title="Back to home">
         <img src="/images/LogoIbukiWhite2.svg" alt="Ibuki Training's logo" />
-        <div id="animation_container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.00)', width: '459px', height: '464px' }}>
-          <canvas id="canvas" width="459" height="464" style={{ position: 'absolute', display: 'block', backgroundColor: 'rgba(255, 255, 255, 0.00)' }} />
-          <div
-            id="dom_overlay_container"
-            style={{
-              pointerEvents: 'none', overflow: 'hidden', width: '459px', height: '464px', position: 'absolute', left: '0px', top: '0px', display: 'block',
-            }}
-          />
-        </div>
       </a>
-      <div className={`nav-links ${toggle ? 'open' : ''}`}>{links.map((link) => <NavLink link={`/${link.toLowerCase()}`} title={t(link)} />)}</div>
+      <div className={`nav-links ${toggle ? 'open' : ''}`}>{links.map((link, i) => <NavLink link={`/${link.toLowerCase()}`} title={t(link)} key={i}/>)}</div>
       <NavToggle clickToggle={toggleNav} toggled={toggle} />
     </nav>
   );
