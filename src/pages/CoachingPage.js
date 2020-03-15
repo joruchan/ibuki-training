@@ -13,7 +13,7 @@ const CoachingPage = () => {
                 <p />
             </div>
             <section>
-                <Banner text='Group Sessions' img='/images/pics/banner1.png' />
+                <Banner text='Group Sessions' img='/images/pics/banner1.jpg' />
                 <div className='formula-details group-training'>
                     <div className='formula-details__text'>
                         <h5>
@@ -47,7 +47,7 @@ const CoachingPage = () => {
             </section>
 
             <section>
-                <Banner text='Personal Training' img='/images/pics/banner2.png' />
+                <Banner text='Personal Training' img='/images/pics/banner2.jpg' />
                 <div className='formula-details personal-training'>
                     <div className='formula-details__text'>
                         <h5>
@@ -105,7 +105,7 @@ const CoachingPage = () => {
                 </div>
             </section>
             <section>
-                <Banner text='Boxing / MMA' img='/images/pics/banner3.png' />
+                <Banner text='Boxing / MMA' img='/images/pics/banner3.jpg' />
                 <div className='formula-details boxing-training'>
                     <div className='formula-details__text'>
                         <h5>
