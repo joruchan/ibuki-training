@@ -29,11 +29,11 @@ i18n.use(XHR)
         fallbackLng: 'en',
         debug: true,
 
-        // have a common namespace used around the full app
+        // la namespace à utiliser pour l'app
         ns: ['translations'],
         defaultNS: 'translations',
         load: 'languageOnly',
-        keySeparator: false, // we use content as keys
+        keySeparator: false, // le contenu = key
 
         interpolation: {
             escapeValue: false, // not needed for react!!

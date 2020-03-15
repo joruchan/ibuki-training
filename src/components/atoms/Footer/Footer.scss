@@ -7,16 +7,11 @@ footer {
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-    p {
+    > p.footer-p {
         font-family: 'Montserrat', Arial, sans-serif;
         font-size: 1.25rem;
         color: white;
         text-align: center;
-        a {
-            font-size: 0.9rem;
-            color: lightsteelblue;
-            text-decoration: none;
-        }
     }
     div {
         display: flex;
@@ -24,6 +19,11 @@ footer {
         align-items: center;
         p {
             margin: 0;
+        }
+        a {
+            font-size: 0.9rem;
+            color: lightsteelblue;
+            text-decoration: none;
         }
         select {
             margin-left: 1rem;
