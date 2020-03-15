@@ -1,27 +1,20 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import SocialLinks from '../../atoms/SocialLinks/SocialLinks';
 import './Main.scss';
 
-import PropTypes from 'prop-types';
-import SocialLinks from '../../atoms/SocialLinks/SocialLinks';
-
-
 function Main({ children, page }) {
-  return (
-    <main className={`${page} container`}>
-      <SocialLinks />
-      <div className="content">
-
-        {children}
-
-      </div>
-    </main>
-  );
+    return (
+        <main className={`${page} container`}>
+            <SocialLinks />
+            <div className='content'>{children}</div>
+        </main>
+    );
 }
 
 Main.propTypes = {
-  children: PropTypes.shape([], {}).isRequired,
-  page: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    page: PropTypes.string.isRequired
 };
-
 
 export default Main;

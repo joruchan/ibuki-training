@@ -1,10 +1,9 @@
 import React from 'react';
 import NavLink from './NavLink';
 
-
 export default {
-  title: 'atom/NavLink',
-  component: NavLink,
+    title: 'atom/NavLink',
+    component: NavLink
 };
 
-export const navLinkStory = () => <NavLink link="#" title="About" />;
+export const navLinkStory = () => <NavLink link='#' title='About' />;

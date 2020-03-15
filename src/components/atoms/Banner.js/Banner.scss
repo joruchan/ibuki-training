@@ -1,72 +1,71 @@
-@import "../../scss-resources/resources.scss";
+@import '../../scss-resources/resources.scss';
 
 .banner {
-	height: 190px;
-	width: 100%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
-	&-img{
-			width: 100%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 100%;
-	}
+    height: 190px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    &-img {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
 
-	&-txt {
-		display: flex;
-		align-items: center;
-		font-family: "Merriweather Sans", Arial, Helvetica, sans-serif;
-		font-size: 2.5rem;
-		font-weight: 800;
-		text-transform: uppercase;
-		padding: 10px 50px;
-		background: rgba(white, 0.8);
-		position: absolute;
-		left: 215px;
-		transform: translateY(-50%);
-		p {
-			transform: translateY(10%);
-			color: black;
-		}
-		&:before {
-			content: "";
-			position: absolute;
-			width: 45px;
-			height: 60px;
-			border-top: 3px solid $orange;
-			border-left: 3px solid $orange;
-			top: -1px;
-			left: -1px;
-		}
-		&:after {
-			content: "";
-			position: absolute;
-			width: 45px;
-			height: 60px;
-			border-bottom: 3px solid $orange;
-			border-right: 3px solid $orange;
-			bottom: -1px;
-			right: -1px;
-		}
-	}
+    &-txt {
+        display: flex;
+        align-items: center;
+        font-family: 'Merriweather Sans', Arial, Helvetica, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding: 10px 50px;
+        background: rgba(white, 0.8);
+        position: absolute;
+        left: 215px;
+        transform: translateY(-50%);
+        p {
+            transform: translateY(10%);
+            color: black;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 60px;
+            border-top: 3px solid $orange;
+            border-left: 3px solid $orange;
+            top: -1px;
+            left: -1px;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 60px;
+            border-bottom: 3px solid $orange;
+            border-right: 3px solid $orange;
+            bottom: -1px;
+            right: -1px;
+        }
+    }
 }
 
-
-@media (max-width: 1250px){
-	.banner-txt{
-		padding: 10px 40px;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+@media (max-width: 1250px) {
+    .banner-txt {
+        padding: 10px 40px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
-@media (max-width: 768px){
-	.banner{
-		height: 100px;
-		&-txt{
-			font-size: 2rem;
-			text-align: center;
-		}
-	}
+@media (max-width: 768px) {
+    .banner {
+        height: 100px;
+        &-txt {
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
 }

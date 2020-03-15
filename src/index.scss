@@ -1,69 +1,76 @@
-@import "./components/scss-resources/resources.scss";
+@import './components/scss-resources/resources.scss';
 
-*{
-	box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
-html{
-	width: 100%;
+html {
+    width: 100%;
 }
 
-body{
-	margin:0;
-	padding: 0;
-	font-family:"Montserrat", Arial, sans-serif;
-	p{
-		color: $black;
-	}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    p {
+        color: $black;
+    }
 }
 
-#root{
-	width: 100%;
-	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/ibukibg.jpg");
-	background-size: cover;
-	background-position: 70%;
-	background-attachment: fixed;
-	overflow: hidden;
+#root {
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('/images/ibukibg.jpg');
+    background-size: cover;
+    background-position: 70%;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
-aside{
-	padding-bottom: 5rem;
+aside {
+    padding-bottom: 5rem;
 }
 
-.accent-phrase{
-	font-family:"Montserrat", Arial, Helvetica, sans-serif;
-	font-size: 2.3rem;
-	font-weight: 500;
-	text-transform: uppercase;
-	color: $black;
-	text-align:center;
-	a{
-		color: $orange;
-		text-decoration: none;
-	}
+.accent-phrase {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 2.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $black;
+    text-align: center;
+    a {
+        color: $orange;
+        text-decoration: none;
+    }
 }
 
-section{
-	.content-title{
-		@include content-title;
-	}
+section {
+    .content-title {
+        @include content-title;
+    }
 }
 
-.loader{
-	position: absolute;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	top:0;
-	left:0;
-	transition: opacity 1s;
-	background: white;
+.loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 1s;
+    background: white;
 }
 
-.hidden{
-	opacity:0;
-	pointer-events: none;
+.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
+@media (max-width: 768px) {
+    #ct-container {
+        top: 75% !important;
+        left: -15px !important;
+    }
+}

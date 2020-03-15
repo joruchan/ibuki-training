@@ -1,4 +1,4 @@
-@import "../../scss-resources/resources.scss";
+@import '../../scss-resources/resources.scss';
 
 .card {
     margin: 3.125rem 5.625rem;
@@ -82,7 +82,7 @@
         z-index: 1;
         top: 50%;
         transform: translateY(-50%);
-        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         font-size: 2rem;
         color: $black;
         letter-spacing: 1px;
@@ -102,7 +102,7 @@
             color: $black;
         }
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             height: 100%;
             width: 80%;
@@ -144,11 +144,11 @@
         .more {
             transform: translateY(0);
             height: 100%;
-			width: 100%;
-			left:unset;
-			top:unset;
-			bottom:unset;
-			right:unset;
+            width: 100%;
+            left: unset;
+            top: unset;
+            bottom: unset;
+            right: unset;
             p {
                 display: block;
                 height: 100%;
@@ -167,15 +167,15 @@
         &:hover .more:after {
             height: 0;
             width: 0;
-		}
-		&:hover .more{
-			transform: translate(0, 0);
-			opacity:0;
-		}
-		&.pic-right:hover .more {
-			transform: translate(0, 0);
-			opacity:0;
-		}
+        }
+        &:hover .more {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+        &.pic-right:hover .more {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
     }
 }
 

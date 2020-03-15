@@ -1,47 +1,44 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import ScrollDown from '../../atoms/CustomIcons/ScrollDown/ScrollDown';
+import NavBar from '../NavBar/NavBar';
 import './Header.scss';
 
-import PropTypes from 'prop-types';
-import NavBar from '../NavBar/NavBar';
-import ScrollDown from '../../atoms/CustomIcons/ScrollDown/ScrollDown';
-
-
-
 function Header({ frontPage }) {
-  return (
-    <header className={`${frontPage ? 'front-page' : ''} upper-wrapper`}>
+    return (
+        <header className={`${frontPage ? 'front-page' : ''} upper-wrapper`}>
+            <NavBar />
 
-      <NavBar />
-
-      <div className="page-title">
-        {frontPage ? (
-          <>
-            <h1>IBUKI TRAINING</h1>
-            <h3 className="sub-title">
-              SCIENTIFIC
-              <br />
-              APPROACH
-              <br />
-              TO
-              <br />
-              SPORTS
-            </h3>
-          </>
-        ) : ''}
-      </div>
-      {frontPage ? <ScrollDown /> : ''}
-
-    </header>
-  );
+            <div className='page-title'>
+                {frontPage ? (
+                    <>
+                        <h1>IBUKI TRAINING</h1>
+                        <h3 className='sub-title'>
+                            SCIENTIFIC
+                            <br />
+                            APPROACH
+                            <br />
+                            TO
+                            <br />
+                            SPORTS
+                        </h3>
+                    </>
+                ) : (
+                    ''
+                )}
+            </div>
+            {frontPage ? <ScrollDown /> : ''}
+        </header>
+    );
 }
 
 Header.propTypes = {
-  frontPage: PropTypes.bool,
+    frontPage: PropTypes.bool
 };
 
 Header.defaultProps = {
-  frontPage: false,
-  pageTitle: '',
+    frontPage: false,
+    pageTitle: ''
 };
 
 export default Header;

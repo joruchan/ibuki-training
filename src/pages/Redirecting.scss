@@ -1,16 +1,18 @@
-.redirecting{
-	&-text{
-		min-height: 40vh;
-    font-size: 1.5rem;
-    padding: 3rem 1rem 1rem;
-    text-align: center;
-	}
+.redirecting {
+    &-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40.6vh;
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
 
-@media (max-width: 768px){
-	.redirecting-text{
-		img{
-			display:none;
-		}
-	}
+@media (max-width: 768px) {
+    .redirecting-text {
+        img {
+            display: none;
+        }
+    }
 }

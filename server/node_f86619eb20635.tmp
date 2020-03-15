@@ -219,6 +219,7 @@ app.delete('/bookings/:id', (req, res) => {
 });
 
 // GET REQUEST WITH PARAMS FOR EMAILS
+
 app.get('/messages', (req, res) => {
   let result;
 

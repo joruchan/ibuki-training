@@ -1,4 +1,4 @@
-@import "../components/scss-resources/resources.scss";
+@import '../components/scss-resources/resources.scss';
 
 .register {
     .content {
@@ -36,7 +36,7 @@
                         }
                     }
                     &:before {
-                        content: "";
+                        content: '';
                         position: absolute;
                         width: 18px;
                         height: 100%;
@@ -60,10 +60,10 @@
                         font-weight: 600;
                     }
                     .terms-agreement {
-                        display:block;
+                        display: block;
                         cursor: pointer;
                         position: relative;
-                        p{
+                        p {
                             font-size: 0.9rem;
                             font-style: italic;
                             max-width: 700px;
@@ -83,7 +83,7 @@
                             transform: translateY(-50%);
                         }
                         .checkmark:after {
-                            content: "";
+                            content: '';
                             position: absolute;
                             display: none;
                             left: 8px;
@@ -127,7 +127,7 @@
                     input {
                         width: 100%;
                         height: 65px;
-                        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+                        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
                         font-size: 1.25rem;
                         padding-left: 25px;
                         letter-spacing: 0.01em;
@@ -150,11 +150,11 @@
                         transform: translate(110%, -20%);
                         width: 400px;
                         &:before {
-                            content: "";
+                            content: '';
                             position: absolute;
                             height: 40px;
                             width: 40px;
-                            background-image: url("/images/icons/cancel.svg");
+                            background-image: url('/images/icons/cancel.svg');
                             background-size: contain;
                             top: 25%;
                             left: 0;
@@ -195,7 +195,7 @@
                 }
                 .dates-inputs__single:not(:nth-of-type(1)):not(:nth-of-type(2)):not(:nth-of-type(9)) {
                     &:after {
-                        content: "(optional)";
+                        content: '(optional)';
                         position: absolute;
                         height: 63px;
                         width: 100%;
@@ -225,7 +225,7 @@
                 margin-left: 70px;
                 padding: 10px 60px;
                 font-size: 1.875rem;
-                font-family: "Montserrat", Arial, Helvetica, sans-serif;
+                font-family: 'Montserrat', Arial, Helvetica, sans-serif;
                 font-weight: bold;
                 letter-spacing: 0.11em;
                 color: white;
@@ -235,7 +235,7 @@
                 position: relative;
                 z-index: 1;
                 &:before {
-                    content: "";
+                    content: '';
                     width: 0;
                     height: 100%;
                     position: absolute;
@@ -271,7 +271,7 @@
                 width: 100%;
                 max-width: 100%;
                 height: 405px;
-                background-image: url("/images/deco/bg1.svg");
+                background-image: url('/images/deco/bg1.svg');
                 background-size: 103%;
                 background-position-y: 100%;
                 background-position-x: 10%;
@@ -286,38 +286,39 @@
     }
 }
 
-div.flatpickr-calendar.hasTime.animate.open > div.flatpickr-time.time24hr > div > input{
+div.flatpickr-calendar.hasTime.animate.open > div.flatpickr-time.time24hr > div > input {
     font-size: 1.4rem;
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     height: 60px;
 }
 
-.flatpickr-time{
-    max-height:60px !important;
+.flatpickr-time {
+    max-height: 60px !important;
     height: 60px !important;
     border-radius: 0px !important;
 }
 
-.flatpickr-time-separator{
+.flatpickr-time-separator {
     line-height: 60px;
 }
 
-div.flatpickr-calendar.hasTime.animate.open.showTimeInput > div.flatpickr-confirm.lightTheme.visible{
+div.flatpickr-calendar.hasTime.animate.open.showTimeInput
+    > div.flatpickr-confirm.lightTheme.visible {
     background: rgb(254, 154, 104);
     font-size: 1.5rem;
     padding: 20px 0;
     max-height: 60px;
-    height:auto;
+    height: auto;
     color: black;
     border-radius: 0 0 5px 5px;
-    svg{
+    svg {
         margin-left: 10px;
         fill: black;
     }
-    &:hover{
+    &:hover {
         color: white;
-        & svg{
-            fill : white;
+        & svg {
+            fill: white;
         }
     }
 }

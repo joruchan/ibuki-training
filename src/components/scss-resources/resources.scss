@@ -3,7 +3,7 @@ $black: rgb(43, 43, 43);
 $red: #a43f3f;
 $green: #47a069;
 
-$title: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
+$title: 'Merriweather Sans', Verdana, Geneva, Tahoma, sans-serif;
 
 @mixin title-typo {
     font-family: $title;
@@ -20,7 +20,7 @@ $title: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
 @mixin highlight {
     position: relative;
     &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 105%;
         height: 60%;
@@ -52,7 +52,7 @@ $title: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
         height: 65%;
     }
     &:before {
-        content: "";
+        content: '';
         position: absolute;
         height: 5px;
         background: $black;
@@ -71,7 +71,7 @@ $title: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
     z-index: 1;
     transition: color 100ms ease-in;
     &:before {
-        content: "";
+        content: '';
         position: absolute;
         left: -60px;
         top: 50%;
@@ -83,7 +83,7 @@ $title: "Merriweather Sans", Verdana, Geneva, Tahoma, sans-serif;
         background-repeat: no-repeat;
     }
     &:after {
-        content: "";
+        content: '';
         position: absolute;
         height: 2px;
         width: 100%;

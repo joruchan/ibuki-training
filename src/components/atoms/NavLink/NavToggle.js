@@ -1,23 +1,28 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './NavToggle.scss';
-import PropTypes from 'prop-types';
 
 function NavToggle({ clickToggle, toggled }) {
-  return (
-    <div className={`nav-toggle ${toggled ? 'open' : ''}`} onClick={clickToggle} onKeyDown={clickToggle} role="button" tabIndex={0}>
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-    </div>
-  );
+    return (
+        <div
+            className={`nav-toggle ${toggled ? 'open' : ''}`}
+            onClick={clickToggle}
+            onKeyDown={clickToggle}
+            role='button'
+            tabIndex={0}>
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+        </div>
+    );
 }
 
 NavToggle.propTypes = {
-  clickToggle: PropTypes.func.isRequired,
-  toggled: PropTypes.bool.isRequired,
+    clickToggle: PropTypes.func.isRequired,
+    toggled: PropTypes.bool.isRequired
 };
 
 export default NavToggle;
