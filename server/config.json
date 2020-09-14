@@ -4,7 +4,7 @@
         "service": "gmail",
         "auth": {
             "user": "jordanedevtest@gmail.com",
-            "pass": "40Ln0l5W&8"
+            "pass": "********"
         }
     }
 }
